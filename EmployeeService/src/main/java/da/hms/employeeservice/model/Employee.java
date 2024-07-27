@@ -28,18 +28,27 @@ public class Employee {
     private String phoneNumber;
 
     @Column(nullable = false)
+    private String bankName;
+
+    @Column(nullable = false)
     private String bankNumber;
 
+    @Transient
+    private int rewardPoints; // Transient field to hold reward points
+
     public Employee() {
+        this.rewardPoints = 0;
     }
 
-    public Employee(String name, String email, String idNumber, String taxNumber, String address, String phoneNumber, String bankNumber) {
+    public Employee(String name, String email, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber) {
         this.name = name;
         this.email = email;
         this.idNumber = idNumber;
         this.taxNumber = taxNumber;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.bankName = bankName;
         this.bankNumber = bankNumber;
+        this.rewardPoints = 0;
     }
 }
