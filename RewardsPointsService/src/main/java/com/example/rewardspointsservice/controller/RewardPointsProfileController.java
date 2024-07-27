@@ -41,15 +41,14 @@ public class RewardPointsProfileController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createRewardPointsProfile(@RequestBody int employeeId) {
+    public ResponseEntity<String> createRewardPointsProfile(@RequestBody int employeeId) {
         try {
             RewardPointsProfile profile = new RewardPointsProfile();
             profile.setEmployeeId(employeeId);
-            profile.setTotalPoints(0);
             rewardPointsRepository.save(profile);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Profile created successfully for employee ID: " + employeeId);
+            return new ResponseEntity<>("Profile created successfully for employee ID: " + employeeId, HttpStatus.CREATED);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create profile: " + e.getMessage());
+            return new ResponseEntity<>("Failed to create profile: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

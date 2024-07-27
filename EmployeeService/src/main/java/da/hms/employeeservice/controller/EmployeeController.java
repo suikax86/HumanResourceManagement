@@ -76,7 +76,12 @@ public class EmployeeController {
         Employee savedEmployee = employeeRepository.save(employee);
 
         // Create RewardPointsProfile for the new employee
-        rewardPointsServiceClient.createRewardPointsProfile(savedEmployee.getId());
+        try {
+            rewardPointsServiceClient.createRewardPointsProfile(savedEmployee.getId());
+        } catch (Exception e) {
+            System.err.println("Failed to create reward points profile: " + e.getMessage());
+        }
+
 
         return savedEmployee;
     }

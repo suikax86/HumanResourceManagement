@@ -1,8 +1,12 @@
 package da.hms.employeeservice.service;
 
 import da.hms.employeeservice.model.client.RewardPointsProfile;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 
 @Service
 public class RewardPointsServiceClient {
@@ -21,7 +25,10 @@ public class RewardPointsServiceClient {
 
     public void createRewardPointsProfile(int employeeId) {
         String url = "http://localhost:8082/api/reward-points-profile/create";
-        restTemplate.postForObject(url, employeeId, String.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Integer> request = new HttpEntity<>(employeeId, headers);
+        restTemplate.postForEntity(url, request, String.class);
     }
 
 
