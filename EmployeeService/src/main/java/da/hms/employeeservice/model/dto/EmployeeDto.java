@@ -32,17 +32,21 @@ public class EmployeeDto {
     private String phoneNumber;
 
     @NotNull
+    private String bankName;
+
+    @NotNull
     private String bankNumber;
 
     public EmployeeDto() {
     }
 
-    public EmployeeDto(String name, String idNumber, String taxNumber, String address, String phoneNumber, String bankNumber) {
+    public EmployeeDto(String name, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber) {
         this.name = name;
         this.idNumber = idNumber;
         this.taxNumber = taxNumber;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.bankName = bankName;
         this.bankNumber = bankNumber;
     }
 }
