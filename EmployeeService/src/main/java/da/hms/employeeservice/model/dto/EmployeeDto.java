@@ -1,5 +1,6 @@
 package da.hms.employeeservice.model.dto;
 
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;

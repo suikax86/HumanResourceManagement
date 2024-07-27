@@ -37,6 +37,7 @@ public class Employee {
     private int rewardPoints; // Transient field to hold reward points
 
     public Employee() {
+        this.rewardPoints = 0;
     }
 
     public Employee(String name, String email, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber) {
@@ -48,5 +49,6 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.bankName = bankName;
         this.bankNumber = bankNumber;
+        this.rewardPoints = 0;
     }
 }

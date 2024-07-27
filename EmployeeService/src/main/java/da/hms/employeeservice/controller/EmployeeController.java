@@ -4,6 +4,7 @@ import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import da.hms.employeeservice.service.RewardPointsServiceClient;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -62,8 +63,9 @@ public class EmployeeController {
     }
 
     @PostMapping("/")
+    @Transactional
+    @ResponseStatus(HttpStatus.CREATED)
     public Employee addEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
-
         // Check if the employee already exists by idNumber
         if(employeeRepository.existsByIdNumber(employeeDto.getIdNumber())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee with the same idNumber already exists");
@@ -71,7 +73,12 @@ public class EmployeeController {
 
         Employee employee = new Employee(employeeDto.getName(), employeeDto.getEmail(), employeeDto.getIdNumber(), employeeDto.getTaxNumber(), employeeDto.getAddress(), employeeDto.getPhoneNumber(), employeeDto.getBankName(),employeeDto.getBankNumber());
 
-        return employeeRepository.save(employee);
+        Employee savedEmployee = employeeRepository.save(employee);
+
+        // Create RewardPointsProfile for the new employee
+        rewardPointsServiceClient.createRewardPointsProfile(savedEmployee.getId());
+
+        return savedEmployee;
     }
 
     @PutMapping("/{id}")
@@ -91,6 +98,18 @@ public class EmployeeController {
         employee.setBankNumber(employeeDto.getBankNumber());
 
         return employeeRepository.save(employee);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable int id) {
+        Employee employee = this.employeeRepository.findById(id).orElse(null);
+
+        if (employee == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
+        }
+
+        employeeRepository.delete(employee);
+
     }
 
 }

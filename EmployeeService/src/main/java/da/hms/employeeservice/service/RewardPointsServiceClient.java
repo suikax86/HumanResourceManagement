@@ -1,6 +1,6 @@
 package da.hms.employeeservice.service;
 
-import da.hms.employeeservice.model.client.RewardPoints;
+import da.hms.employeeservice.model.client.RewardPointsProfile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,9 +14,14 @@ public class RewardPointsServiceClient {
     }
 
     public int getRewardPoints(int employeeId) {
-        String url = "http://localhost:8082/api/reward-points/" + employeeId;
-        RewardPoints rewardPoints = restTemplate.getForObject(url, RewardPoints.class);
-        return rewardPoints != null ? rewardPoints.getPoints() : 0;
+        String url = "http://localhost:8082/api/reward-points-profile/" + employeeId;
+        RewardPointsProfile rewardPointsProfile = restTemplate.getForObject(url, RewardPointsProfile.class);
+        return rewardPointsProfile != null ? rewardPointsProfile.getTotalPoints() : 0;
+    }
+
+    public void createRewardPointsProfile(int employeeId) {
+        String url = "http://localhost:8082/api/reward-points-profile/create";
+        restTemplate.postForObject(url, employeeId, String.class);
     }
 
 

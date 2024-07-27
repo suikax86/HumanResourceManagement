@@ -1,10 +1,10 @@
 package com.example.rewardspointsservice.repository;
 
-import com.example.rewardspointsservice.model.RewardPoints;
+import com.example.rewardspointsservice.model.RewardPointsProfile;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface RewardPointsRepository extends MongoRepository<RewardPoints, String> {
-    Optional<RewardPoints> findByEmployeeId(int employeeId);
+public interface RewardPointsRepository extends MongoRepository<RewardPointsProfile, String> {
+    Optional<RewardPointsProfile> findByEmployeeId(int employeeId);
 }
