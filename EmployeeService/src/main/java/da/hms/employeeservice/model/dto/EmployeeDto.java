@@ -37,16 +37,18 @@ public class EmployeeDto {
     @NotNull
     private String bankNumber;
 
-    public EmployeeDto() {
-    }
+    private int rewardPoints;
 
-    public EmployeeDto(String name, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber) {
+
+    public EmployeeDto(String name, String email, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber, int rewardPoints) {
         this.name = name;
+        this.email = email;
         this.idNumber = idNumber;
         this.taxNumber = taxNumber;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.bankName = bankName;
         this.bankNumber = bankNumber;
+        this.rewardPoints = rewardPoints;
     }
 }

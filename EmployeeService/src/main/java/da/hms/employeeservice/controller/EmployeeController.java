@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,35 +25,39 @@ public class EmployeeController {
     }
 
     @GetMapping("/")
-    public List<Employee> getEmployees() {
+    public List<EmployeeDto> getEmployees() {
         List<Employee> employees =  employeeRepository.findAll();
+        List<EmployeeDto> employeeDtos = new ArrayList<>();
         for(Employee employee : employees) {
             try {
                 int points = rewardPointsServiceClient.getRewardPoints(employee.getId());
-                employee.setRewardPoints(points);
+                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
             }
             catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
-                employee.setRewardPoints(-1);
+                int points = -1;
+                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
             }
         }
-        return employees;
+        return employeeDtos;
     }
 
     @GetMapping("/{id}")
-    public Employee getEmployee(@PathVariable int id) {
+    public EmployeeDto getEmployee(@PathVariable int id) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
+        EmployeeDto employeeDto;
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         } else {
             try{
                 int points = rewardPointsServiceClient.getRewardPoints(id);
-                employee.setRewardPoints(points);
+                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
             } catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
-                employee.setRewardPoints(-1);
+                int points = -1;
+                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
             }
-            return employee;
+            return employeeDto;
         }
     }
 

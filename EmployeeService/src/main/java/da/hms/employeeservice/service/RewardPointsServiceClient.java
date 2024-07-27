@@ -1,7 +1,6 @@
 package da.hms.employeeservice.service;
 
 import da.hms.employeeservice.model.client.RewardPoints;
-import lombok.Data;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
