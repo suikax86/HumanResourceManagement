@@ -1,19 +1,20 @@
-import React from 'react'
-import './header.scss'
+import { NavLink } from "react-router-dom";
+import "./Header.scss";
 
-
-function header() {
+function Header() {
   return (
-    <div className='header_container'>
-      <div className='header_container_company_name'>Công ty xyz</div>
-      <div className='header_container_nav'>
-        <div className='header_container_nav_work'>Trang chủ</div>
-        <div className='header_container_nav_notwork'>Hoạt động của tôi</div>
-        <div className='header_container_nav_notwork'>Hồ sơ của tôi</div>
+    <div className="header_container">
+      <div className="header_container_company_name">Công ty xyz</div>
+      <div className="header_container_nav">
+        <NavLink to="/">Trang chủ</NavLink>
+        <NavLink to="/MyProfile">
+          Hồ sơ của tôi
+        </NavLink>
+        <a href="http://www.localhost:80/myactivities"> Hoạt động của tôi</a>
       </div>
-      <button className='header_container_button'>Log in</button>
+      <button className="header_container_button">Log in</button>
     </div>
-  )
+  );
 }
 
-export default header
+export default Header;
