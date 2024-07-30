@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import './Loginform.scss'
+import './login-form.scss'
 
-function Loginform() {
+function LoginForm() {
   const [email,setEmail] = useState('')
   const [pass,setPass] = useState('')
   const handleChangeEmail = (email) => {
@@ -46,4 +46,4 @@ function Loginform() {
   )
 }
 
-export default Loginform
+export default LoginForm
