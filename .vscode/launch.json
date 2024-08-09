@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EurekaServerApplication<EurekaServer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "da.hms.eurekaserver.EurekaServerApplication",
+            "projectName": "EurekaServer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=61465 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=EurekaServer"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EmployeeServiceApplication<EmployeeService>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "da.hms.employeeservice.EmployeeServiceApplication",
+            "projectName": "EmployeeService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
