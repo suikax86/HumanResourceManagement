@@ -1,6 +1,7 @@
 package da.hms.employeeservice.controller;
 
 import da.hms.employeeservice.model.Employee;
+import da.hms.employeeservice.model.dto.AddEmployeeDto;
 import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import da.hms.employeeservice.service.RewardPointsServiceClient;
@@ -65,7 +66,7 @@ public class EmployeeController {
     @PostMapping("/")
     @Transactional
     @ResponseStatus(HttpStatus.CREATED)
-    public Employee addEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
+    public Employee addEmployee(@Valid @RequestBody AddEmployeeDto employeeDto) {
         // Check if the employee already exists by idNumber
         if(employeeRepository.existsByIdNumber(employeeDto.getIdNumber())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee with the same idNumber already exists");
@@ -73,21 +74,11 @@ public class EmployeeController {
 
         Employee employee = new Employee(employeeDto.getName(), employeeDto.getEmail(), employeeDto.getIdNumber(), employeeDto.getTaxNumber(), employeeDto.getAddress(), employeeDto.getPhoneNumber(), employeeDto.getBankName(),employeeDto.getBankNumber());
 
-        Employee savedEmployee = employeeRepository.save(employee);
-
-        // Create RewardPointsProfile for the new employee
-        try {
-            rewardPointsServiceClient.createRewardPointsProfile(savedEmployee.getId());
-        } catch (Exception e) {
-            System.err.println("Failed to create reward points profile: " + e.getMessage());
-        }
-
-
-        return savedEmployee;
+        return employeeRepository.save(employee);
     }
 
     @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable int id, @Valid @RequestBody EmployeeDto employeeDto) {
+    public Employee updateEmployee(@PathVariable int id, @Valid @RequestBody AddEmployeeDto employeeDto) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
 
         if (employee == null) {
@@ -105,7 +96,15 @@ public class EmployeeController {
         return employeeRepository.save(employee);
     }
 
+    @GetMapping("/checkActivated/{id}")
+    public boolean checkActivated(@PathVariable int id) {
+        Employee employee = this.employeeRepository.findById(id).orElseThrow(() ->
+            new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+        return employee.getIsActivated();
+    }
+
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteEmployee(@PathVariable int id) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
 
@@ -113,7 +112,8 @@ public class EmployeeController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         }
 
-        employeeRepository.delete(employee);
+        employee.setIsActivated(false);
+        employeeRepository.save(employee);
 
     }
 
