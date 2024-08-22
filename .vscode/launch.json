@@ -19,6 +19,27 @@
             "mainClass": "da.hms.employeeservice.EmployeeServiceApplication",
             "projectName": "EmployeeService",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=50543 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=EmployeeService"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RewardsPointsServiceApplication<RewardsPointsService>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.rewardspointsservice.RewardsPointsServiceApplication",
+            "projectName": "RewardsPointsService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayApplication<APIGateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.apigateway.ApiGatewayApplication",
+            "projectName": "APIGateway",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]
