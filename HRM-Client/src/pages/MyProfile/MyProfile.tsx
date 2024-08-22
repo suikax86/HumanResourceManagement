@@ -1,6 +1,6 @@
-import ProfileForm from "../../components/ProfileForm/ProfileForm";
-import Header from "../../components/common/Header/Header.jsx";
-import Footer from "../../components/common/Footer/Footer.jsx";
+import ProfileForm from "../../components/ProfileForm/ProfileForm.js";
+import Header from "../../components/common/Header/Header.js";
+import Footer from "../../components/common/Footer/Footer.js";
 import "./MyProfile.scss";
 
 function MyProfile() {
