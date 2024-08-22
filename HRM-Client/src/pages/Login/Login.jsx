@@ -1,10 +1,10 @@
 import React from "react";
-import './login.scss'
-import Loginform from "../../components/loginform/Loginform";
+import './Login.scss'
+import LoginForm from "../../components/LoginForm/LoginForm.jsx";
 
 function Login() {
   return <div className="login_container">
-    <Loginform/>
+    <LoginForm/>
   </div>;
 }
 

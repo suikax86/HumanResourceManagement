@@ -1,7 +1,6 @@
-import React from 'react'
-import "./footer.scss"
+import "./Footer.scss"
 
-function footer() {
+function Footer() {
   return (
     <div className='footer_container'>
       This is footer
@@ -9,4 +8,4 @@ function footer() {
   )
 }
 
-export default footer
+export default Footer
