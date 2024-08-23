@@ -8,10 +8,13 @@ import da.hms.employeeservice.model.dto.RegisterDto;
 import da.hms.employeeservice.repository.AccountRepository;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import da.hms.employeeservice.repository.RoleRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,18 +31,29 @@ public class AuthController {
 
     private final RoleRepository roleRepository;
 
-    public AuthController(EmployeeRepository employeeRepository, AccountRepository accountRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    private final RabbitTemplate rabbitTemplate;
+
+
+    public AuthController(EmployeeRepository employeeRepository, AccountRepository accountRepository, BCryptPasswordEncoder passwordEncoder, RoleRepository roleRepository, RabbitTemplate rabbitTemplate) {
         this.employeeRepository = employeeRepository;
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @PostMapping("/register")
+    @Transactional
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
 
+        // Check if the email is already in use
         if (accountRepository.existsByUsername(registerDto.getEmail())) {
             return new ResponseEntity<>("Email already in use", HttpStatus.BAD_REQUEST);
+        }
+
+        // Check if the employee already exists by idNumber
+        if(employeeRepository.existsByIdNumber(registerDto.getIdNumber())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee with the same idNumber already exists");
         }
 
         Employee employee = new Employee(
@@ -52,7 +66,7 @@ public class AuthController {
                 registerDto.getBankName(),
                 registerDto.getBankNumber()
         );
-        employeeRepository.save(employee);
+        Employee savedEmployee = employeeRepository.save(employee);
 
         //Default role is employee
         String roleName = registerDto.getRole() != null ? registerDto.getRole() : "EMPLOYEE";
@@ -64,8 +78,10 @@ public class AuthController {
                 employee,
                 role
         );
-
         accountRepository.save(account);
+
+        // Publish message to RabbitMQ exchange
+        rabbitTemplate.convertAndSend("employeeExchange","employee.created",savedEmployee.getId());
 
         return new ResponseEntity<>("Registration successful", HttpStatus.CREATED);
     }

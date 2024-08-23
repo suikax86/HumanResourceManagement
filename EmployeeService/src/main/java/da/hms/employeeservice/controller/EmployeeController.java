@@ -6,6 +6,7 @@ import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,9 +19,11 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
+    private final RabbitTemplate rabbitTemplate;
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
+    public EmployeeController(EmployeeRepository employeeRepository, RabbitTemplate rabbitTemplate) {
         this.employeeRepository = employeeRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @GetMapping("/")
@@ -56,20 +59,6 @@ public class EmployeeController {
             }
             return employeeDto;
         }
-    }
-
-    @PostMapping("/")
-    @Transactional
-    @ResponseStatus(HttpStatus.CREATED)
-    public Employee addEmployee(@Valid @RequestBody AddEmployeeDto employeeDto) {
-        // Check if the employee already exists by idNumber
-        if(employeeRepository.existsByIdNumber(employeeDto.getIdNumber())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee with the same idNumber already exists");
-        }
-
-        Employee employee = new Employee(employeeDto.getName(), employeeDto.getEmail(), employeeDto.getIdNumber(), employeeDto.getTaxNumber(), employeeDto.getAddress(), employeeDto.getPhoneNumber(), employeeDto.getBankName(),employeeDto.getBankNumber());
-
-        return employeeRepository.save(employee);
     }
 
     @PutMapping("/{id}")
