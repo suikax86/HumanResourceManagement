@@ -11,6 +11,13 @@ function Header() {
           Hồ sơ của tôi
         </NavLink>
         <a href="http://www.localhost:80/myactivities"> Hoạt động của tôi</a>
+        <NavLink to="/DonXinNghi">
+          Xin nghỉ phép
+        </NavLink>
+        <NavLink to="/WorkFromHome">
+          Work From Home
+        </NavLink>
+        
       </div>
       <button className="header_container_button">Log in</button>
     </div>
