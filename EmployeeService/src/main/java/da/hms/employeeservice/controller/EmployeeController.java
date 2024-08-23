@@ -4,7 +4,6 @@ import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.dto.AddEmployeeDto;
 import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
-import da.hms.employeeservice.service.RewardPointsServiceClient;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -19,11 +18,9 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
-    private final RewardPointsServiceClient rewardPointsServiceClient;
 
-    public EmployeeController(EmployeeRepository employeeRepository, RewardPointsServiceClient rewardPointsServiceClient) {
+    public EmployeeController(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.rewardPointsServiceClient = rewardPointsServiceClient;
     }
 
     @GetMapping("/")
@@ -32,8 +29,7 @@ public class EmployeeController {
         List<EmployeeDto> employeeDtos = new ArrayList<>();
         for(Employee employee : employees) {
             try {
-                int points = rewardPointsServiceClient.getRewardPoints(employee.getId());
-                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
+                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0));
             }
             catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
@@ -45,15 +41,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public EmployeeDto getEmployee(@PathVariable int id) {
+    public EmployeeDto getEmployee(@PathVariable Long id) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
         EmployeeDto employeeDto;
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         } else {
             try{
-                int points = rewardPointsServiceClient.getRewardPoints(id);
-                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
+                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0);
             } catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
                 int points = -1;
@@ -78,7 +73,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable int id, @Valid @RequestBody AddEmployeeDto employeeDto) {
+    public Employee updateEmployee(@PathVariable Long id, @Valid @RequestBody AddEmployeeDto employeeDto) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
 
         if (employee == null) {
@@ -97,7 +92,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/checkActivated/{id}")
-    public boolean checkActivated(@PathVariable int id) {
+    public boolean checkActivated(@PathVariable Long id) {
         Employee employee = this.employeeRepository.findById(id).orElseThrow(() ->
             new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
         return employee.getIsActivated();
@@ -105,7 +100,7 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteEmployee(@PathVariable int id) {
+    public void deleteEmployee(@PathVariable Long id) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
 
         if (employee == null) {
