@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface RewardPointsRepository extends MongoRepository<RewardPointsProfile, String> {
-    Optional<RewardPointsProfile> findByEmployeeId(int employeeId);
+    Optional<RewardPointsProfile> findByEmployeeId(Long employeeId);
 }

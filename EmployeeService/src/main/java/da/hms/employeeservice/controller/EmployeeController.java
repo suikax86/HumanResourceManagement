@@ -1,11 +1,12 @@
 package da.hms.employeeservice.controller;
 
 import da.hms.employeeservice.model.Employee;
+import da.hms.employeeservice.model.dto.AddEmployeeDto;
 import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
-import da.hms.employeeservice.service.RewardPointsServiceClient;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,11 +19,11 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
-    private final RewardPointsServiceClient rewardPointsServiceClient;
+    private final RabbitTemplate rabbitTemplate;
 
-    public EmployeeController(EmployeeRepository employeeRepository, RewardPointsServiceClient rewardPointsServiceClient) {
+    public EmployeeController(EmployeeRepository employeeRepository, RabbitTemplate rabbitTemplate) {
         this.employeeRepository = employeeRepository;
-        this.rewardPointsServiceClient = rewardPointsServiceClient;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @GetMapping("/")
@@ -31,8 +32,7 @@ public class EmployeeController {
         List<EmployeeDto> employeeDtos = new ArrayList<>();
         for(Employee employee : employees) {
             try {
-                int points = rewardPointsServiceClient.getRewardPoints(employee.getId());
-                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
+                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0));
             }
             catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
@@ -44,15 +44,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public EmployeeDto getEmployee(@PathVariable int id) {
+    public EmployeeDto getEmployee(@PathVariable Long id) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
         EmployeeDto employeeDto;
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         } else {
             try{
-                int points = rewardPointsServiceClient.getRewardPoints(id);
-                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
+                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0);
             } catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
                 int points = -1;
@@ -62,32 +61,8 @@ public class EmployeeController {
         }
     }
 
-    @PostMapping("/")
-    @Transactional
-    @ResponseStatus(HttpStatus.CREATED)
-    public Employee addEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
-        // Check if the employee already exists by idNumber
-        if(employeeRepository.existsByIdNumber(employeeDto.getIdNumber())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee with the same idNumber already exists");
-        }
-
-        Employee employee = new Employee(employeeDto.getName(), employeeDto.getEmail(), employeeDto.getIdNumber(), employeeDto.getTaxNumber(), employeeDto.getAddress(), employeeDto.getPhoneNumber(), employeeDto.getBankName(),employeeDto.getBankNumber());
-
-        Employee savedEmployee = employeeRepository.save(employee);
-
-        // Create RewardPointsProfile for the new employee
-        try {
-            rewardPointsServiceClient.createRewardPointsProfile(savedEmployee.getId());
-        } catch (Exception e) {
-            System.err.println("Failed to create reward points profile: " + e.getMessage());
-        }
-
-
-        return savedEmployee;
-    }
-
     @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable int id, @Valid @RequestBody EmployeeDto employeeDto) {
+    public Employee updateEmployee(@PathVariable Long id, @Valid @RequestBody AddEmployeeDto employeeDto) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
 
         if (employee == null) {
@@ -105,15 +80,24 @@ public class EmployeeController {
         return employeeRepository.save(employee);
     }
 
+    @GetMapping("/checkActivated/{id}")
+    public boolean checkActivated(@PathVariable Long id) {
+        Employee employee = this.employeeRepository.findById(id).orElseThrow(() ->
+            new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+        return employee.getIsActivated();
+    }
+
     @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable int id) {
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteEmployee(@PathVariable Long id) {
         Employee employee = this.employeeRepository.findById(id).orElse(null);
 
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         }
 
-        employeeRepository.delete(employee);
+        employee.setIsActivated(false);
+        employeeRepository.save(employee);
 
     }
 

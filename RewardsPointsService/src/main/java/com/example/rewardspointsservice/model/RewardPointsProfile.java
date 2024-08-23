@@ -13,20 +13,20 @@ import java.util.List;
 public class RewardPointsProfile {
     @Id
     private String id;
-    private int employeeId;
-    private int totalPoints;
+    private Long employeeId;
+    private Double totalPoints;
     private List<RewardPointsTransaction> pointsHistory = new ArrayList<>();
 
     public RewardPointsProfile() {
-        this.totalPoints = 0;
+        this.totalPoints = (double) 0;
     }
 
-    public void addPoints(int seederId,int points, String description) {
+    public void addPoints(Long seederId,Double points, String description) {
         this.totalPoints += points;
         this.pointsHistory.add(new RewardPointsTransaction(seederId,employeeId, points, TransactionType.ADD, description, LocalDateTime.now()));
     }
 
-    public void subtractPoints(int seederId, int points, String description) {
+    public void subtractPoints(Long seederId, Double points, String description) {
         this.totalPoints -= points;
         this.pointsHistory.add(new RewardPointsTransaction(seederId, employeeId, points, TransactionType.SUBTRACT, description, LocalDateTime.now()));
     }

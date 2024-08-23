@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 public class RewardPointsTransaction {
     @Id
     private String id;
-    private int senderId;
-    private int receiverId;
-    private int points;
+    private Long senderId;
+    private Long receiverId;
+    private Double points;
     private TransactionType transactionType;
     private String description;
     private LocalDateTime timeStamp;
 
-    public RewardPointsTransaction(int senderId, int receiverId, int points, TransactionType transactionType, String description, LocalDateTime timeStamp) {
+    public RewardPointsTransaction(Long senderId, Long receiverId, Double points, TransactionType transactionType, String description, LocalDateTime timeStamp) {
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.points = points;

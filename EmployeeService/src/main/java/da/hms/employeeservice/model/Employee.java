@@ -8,7 +8,7 @@ import lombok.Data;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -33,11 +33,18 @@ public class Employee {
     @Column(nullable = false)
     private String bankNumber;
 
+    @Column(nullable = false)
+    private Boolean isActivated = false;
+
     @Transient
     private int rewardPoints; // Transient field to hold reward points
 
+    @OneToOne(mappedBy = "employee")
+    private Account account;
+
     public Employee() {
         this.rewardPoints = 0;
+        this.isActivated = true;
     }
 
     public Employee(String name, String email, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber) {
@@ -50,5 +57,6 @@ public class Employee {
         this.bankName = bankName;
         this.bankNumber = bankNumber;
         this.rewardPoints = 0;
+        this.isActivated = true;
     }
 }
