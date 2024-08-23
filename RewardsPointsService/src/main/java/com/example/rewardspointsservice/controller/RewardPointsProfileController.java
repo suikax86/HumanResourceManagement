@@ -18,7 +18,7 @@ public class RewardPointsProfileController {
     }
 
     @GetMapping("/{employeeId}")
-    public ResponseEntity<?> getRewardPoints(@PathVariable int employeeId) {
+    public ResponseEntity<?> getRewardPoints(@PathVariable Long employeeId) {
         try {
             RewardPointsProfile profile = rewardPointsRepository.findByEmployeeId(employeeId)
                     .orElseThrow(() -> new RuntimeException("Employee not found"));
@@ -29,7 +29,7 @@ public class RewardPointsProfileController {
     }
 
     @PutMapping("/{employeeId}")
-    public RewardPointsProfile updateRewardPoints(@PathVariable int employeeId, @RequestBody RewardPointsProfile rewardPoints) {
+    public RewardPointsProfile updateRewardPoints(@PathVariable Long employeeId, @RequestBody RewardPointsProfile rewardPoints) {
         Optional<RewardPointsProfile> existingRewardPoints = rewardPointsRepository.findByEmployeeId(employeeId);
         if (existingRewardPoints.isPresent()) {
             RewardPointsProfile points = existingRewardPoints.get();
@@ -41,7 +41,7 @@ public class RewardPointsProfileController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createRewardPointsProfile(@RequestBody int employeeId) {
+    public ResponseEntity<String> createRewardPointsProfile(@RequestBody Long employeeId) {
         try {
             RewardPointsProfile profile = new RewardPointsProfile();
             profile.setEmployeeId(employeeId);
