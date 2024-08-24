@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: employee-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/employees/**
+        - id: auth-route
+          uri: http://localhost:8081
+          predicates:
+              - Path=/api/auth/**
+        - id: reward-points-profile-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/reward-points-profile/**
+
+
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: DEBUG
+
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
