@@ -49,11 +49,11 @@ function ProfileForm() {
           </div>
           <div className="profile-row">
             <div className="profile-label">Căn cước:</div>
-            <div className="profile-value">{employee.identityCard}</div>
+            <div className="profile-value">{employee.idNumber}</div>
           </div>
           <div className="profile-row">
             <div className="profile-label">Mã số thuế:</div>
-            <div className="profile-value">{employee.taxCode}</div>
+            <div className="profile-value">{employee.taxNumber}</div>
           </div>
           <div className="profile-row">
             <div className="profile-label">Số điện thoại:</div>
@@ -69,7 +69,7 @@ function ProfileForm() {
           </div>
           <div className="profile-row">
             <div className="profile-label">Số ngân hàng:</div>
-            <div className="profile-value">{employee.bankAccount}</div>
+            <div className="profile-value">{employee.bankNumber}</div>
           </div>
           <div className="profile-row">
             <div className="profile-label">Số điểm thưởng:</div>

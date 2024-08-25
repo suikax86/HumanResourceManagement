@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="EurekaServer" />
         <module name="API-Gateway" />
+        <module name="EmailService" />
         <module name="RewardsPointsService" />
         <module name="EmployeeService" />
       </profile>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="API-Gateway" options="-parameters" />
       <module name="APIGateway" options="-parameters" />
+      <module name="EmailService" options="-parameters" />
       <module name="EmployeeService" options="-parameters" />
       <module name="EurekaServer" options="-parameters" />
       <module name="RewardsPointsService" options="-parameters" />

@@ -4,9 +4,7 @@ import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.dto.AddEmployeeDto;
 import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,11 +17,9 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
-    private final RabbitTemplate rabbitTemplate;
 
-    public EmployeeController(EmployeeRepository employeeRepository, RabbitTemplate rabbitTemplate) {
+    public EmployeeController(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.rabbitTemplate = rabbitTemplate;
     }
 
     @GetMapping("/")
