@@ -19,7 +19,9 @@ function Header() {
         </NavLink>
         
       </div>
-      <button className="header_container_button">Log in</button>
+      <NavLink to="/login">
+        <button className="header_container_button">Log in</button>
+      </NavLink>
     </div>
   );
 }
