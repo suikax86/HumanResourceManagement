@@ -1,24 +1,25 @@
 spring:
   application:
     name: API-Gateway
+  output:
+    ansi:
+      enabled: ALWAYS
   cloud:
     gateway:
       routes:
         - id: employee-route
-          uri: http://localhost:8081
+          uri: lb://EMPLOYEESERVICE
           predicates:
             - Path=/api/employees/**
         - id: auth-route
-          uri: http://localhost:8081
+          uri: lb://EMPLOYEESERVICE
           predicates:
-              - Path=/api/auth/**
+            - Path=/api/auth/**
         - id: reward-points-profile-route
-          uri: http://localhost:8082
+          uri: lb://REWARDSPOINTSSERVICE
           predicates:
             - Path=/api/reward-points-profile/**
-
-
-
+  
 logging:
   level:
     org:
