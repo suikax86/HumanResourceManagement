@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/RewardsPointsService/pom.xml" />
         <option value="$PROJECT_DIR$/APIGateway/pom.xml" />
         <option value="$PROJECT_DIR$/API-Gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/EmailService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
