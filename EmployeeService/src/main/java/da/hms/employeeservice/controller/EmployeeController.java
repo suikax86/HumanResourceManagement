@@ -28,12 +28,12 @@ public class EmployeeController {
         List<EmployeeDto> employeeDtos = new ArrayList<>();
         for(Employee employee : employees) {
             try {
-                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0));
+                employeeDtos.add(new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),"", employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0));
             }
             catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
                 int points = -1;
-                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
+                employeeDtos.add(new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),"", employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0));
             }
         }
         return employeeDtos;
@@ -46,12 +46,16 @@ public class EmployeeController {
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         } else {
+            String role = "";
             try{
-                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0);
+                if (employee.getAccount() != null && employee.getAccount().getRole() != null) {
+                    role = employee.getAccount().getRole().getName();
+                }
+                employeeDto = new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),role, employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0);
             } catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
                 int points = -1;
-                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
+                employeeDto = new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),role, employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
             }
             return employeeDto;
         }

@@ -45,7 +45,7 @@ function ProfileForm() {
           </div>
           <div className="profile-row">
             <div className="profile-label">Chức vị:</div>
-            <div className="profile-value">{employee.position}</div>
+            <div className="profile-value">{employee.role}</div>
           </div>
           <div className="profile-row">
             <div className="profile-label">Căn cước:</div>
