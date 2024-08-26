@@ -1,4 +1,4 @@
-// src/ContactForm.js
+
 import React, { useState } from 'react';
 import './WorkFromHome.scss'
 function WorkFromHome() {
@@ -13,11 +13,6 @@ function WorkFromHome() {
         setSelectedOption(event.target.value);
     };
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     alert(`Form submitted!\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
-    //     // Here you can handle the form data, such as sending it to a server
-    // };
 
 
 
