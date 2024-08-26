@@ -27,6 +27,8 @@ function LoginForm() {
       if (response.status === 200) {
         localStorage.setItem("userInfo", JSON.stringify(response.data));
         toast.success("Login successful!");
+        // Redirect to home page
+        window.location.href = "/";
       }
     } catch (error) {
       if (error.response && error.response.status === 404) {
