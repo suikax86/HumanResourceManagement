@@ -17,6 +17,9 @@ function Header() {
         <NavLink to="/WorkFromHome">
           Work From Home
         </NavLink>
+        <NavLink to="/DuyetDon">
+          Duyệt đơn xin nghỉ
+        </NavLink>
         
       </div>
       <button className="header_container_button">Log in</button>
