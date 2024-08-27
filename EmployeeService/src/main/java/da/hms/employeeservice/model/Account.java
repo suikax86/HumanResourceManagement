@@ -3,8 +3,7 @@ package da.hms.employeeservice.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Data

@@ -1,5 +1,6 @@
 package da.hms.employeeservice.controller;
 
+import da.hms.employeeservice.client.EmailInfo;
 import da.hms.employeeservice.model.Account;
 import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.Role;
