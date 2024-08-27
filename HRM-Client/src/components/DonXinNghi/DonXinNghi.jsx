@@ -29,6 +29,11 @@ function DonXinNghi() {
       [name]: value
     });
   };
+  const today = new Date().toISOString().split('T')[0];
+
+  // Function to validate the date inputs
+  const isDayRestValid = formData.dayRest === '' || formData.dateBackToWork === '' || formData.dayRest <= formData.dateBackToWork;
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -99,6 +104,8 @@ function DonXinNghi() {
             value={formData.dayRest}
             onChange={handleChange}
             required
+          min={today} // Sets the min allowable date to today
+          max={formData.dateBackToWork} // Sets the max allowable date to Date Back to Work
           />
         </label>
         <br />
@@ -112,6 +119,10 @@ function DonXinNghi() {
             required
           />
         </label>
+
+        {!isDayRestValid && (
+        <p style={{ color: 'red' }}>Day Rest cannot be later than Date Back to Work.</p>
+      )}
         <br />
         <label>
         <select
@@ -159,7 +170,7 @@ function DonXinNghi() {
           />
         </label>
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit"  disabled={!isDayRestValid}>Submit</button>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
