@@ -26,7 +26,7 @@ function DonXinNghi() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8081/forms', formData)
+    axios.post('http://localhost:8081/api/forms', formData)
       .then(response => {
         setResponseMessage('Form submitted successfully!');
         setError('');
