@@ -66,7 +66,7 @@ function DuyetDonNV() {
       
       setFormData({
         ...formData,
-        formCondition: 'Duyet' // Replace 'newValue' with the new value for formCondition
+        formCondition: 'Approved' // Replace 'newValue' with the new value for formCondition
       });
       console.log('test log: ',formData.id);
 
@@ -79,7 +79,7 @@ function DuyetDonNV() {
         dayRest: formData.dayRest,
         dateBackToWork: formData.dateBackToWork,
         type: formData.type,
-        formCondition: "Duyet",
+        formCondition: "Approved",
         reason: formData.reason
       })
         .then(response => {
@@ -102,7 +102,7 @@ function DuyetDonNV() {
       
       setFormData({
         ...formData,
-        formCondition: 'Duyet' // Replace 'newValue' with the new value for formCondition
+        formCondition: 'Denied' // Replace 'newValue' with the new value for formCondition
       });
       console.log('test log: ',formData.id);
 
@@ -115,7 +115,7 @@ function DuyetDonNV() {
         dayRest: formData.dayRest,
         dateBackToWork: formData.dateBackToWork,
         type: formData.type,
-        formCondition: "Khong Duyet",
+        formCondition: "Denied",
         reason: formData.reason
       })
         .then(response => {
@@ -140,7 +140,8 @@ function DuyetDonNV() {
 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Id</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Stt</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Id Nhân viên</th>
             <th style={{ border: '1px solid black', padding: '10px' }}>Name</th>
             <th style={{ border: '1px solid black', padding: '10px' }}>Nghỉ từ ngày</th>
             <th style={{ border: '1px solid black', padding: '10px' }}>Ngày đi làm lại</th>
@@ -160,12 +161,16 @@ function DuyetDonNV() {
               }}
             >
               <td style={{ border: '1px solid black', padding: '10px'  }}>{person.id}</td>
+              <td style={{ border: '1px solid black', padding: '10px'  }}>{person.employeeId}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.name}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.dayRest}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.dateBackToWork}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.type}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.reason}</td>
-              <td style={{ border: '1px solid black', padding: '10px', backgroundColor: person.formCondition ==="Duyet" ? '#2ED754' : '#FA3A3A' }}>{person.formCondition}</td>
+              <td style={{ border: '1px solid black', padding: '10px', backgroundColor:
+      person.formCondition === 'Pending' ? 'purple' :
+      person.formCondition === 'Approved' ? 'green' :
+      person.formCondition === 'Denied' ? 'red' : 'white' }}>{person.formCondition}</td>
             </tr>
           ))}
         </tbody>
@@ -174,7 +179,7 @@ function DuyetDonNV() {
 
       <div className="button-container">
         <button onClick={()=>{DuyetDon()}} className='Duyet'>Duyệt</button>
-        <button  onClick={()=>{KhongDuyetDon()}}   className='KoDuyet'>Không Duyệt</button>
+        <button  onClick={()=>{KhongDuyetDon()}}   className='KoDuyet'>Từ Chối</button>
         </div></>
       
     );
