@@ -15,6 +15,7 @@ public class Form {
     private String phone;
     private LocalDate dayRest;
     private LocalDate dateBackToWork;
+    private String FormCondition;
     private String type;
     private String reason;
 
@@ -91,6 +92,13 @@ public class Form {
 
     public String getReason() {
         return reason;
+    }
+    public String getFormCondition() {
+        return FormCondition;
+    }
+
+    public void setFormCondition(String formCondition) {
+        this.FormCondition = formCondition;
     }
 
     public void setReason(String reason) {
