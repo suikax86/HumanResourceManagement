@@ -12,6 +12,13 @@ function DonXinNghi() {
     reason: ''
   });
 
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleTypeChange = (event) => {
+    setSelectedOption(event.target.value);
+    console.log('Selected option:', event.target.value);
+  };
+
   const [responseMessage, setResponseMessage] = useState('');
   const [error, setError] = useState('');
 
@@ -107,15 +114,39 @@ function DonXinNghi() {
         </label>
         <br />
         <label>
-          Type:
-          <input
-            type="text"
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-            required
-          />
+        <select
+    name="type"
+    value={formData.type}
+    onChange={handleChange}
+    required
+  >
+    <option value="" disabled>Type of rest</option>
+    <option value="WFH">WFH</option>
+    <option value="Nghi Phep">Nghỉ phép</option>
+    <option value="Khac">Lý do riêng</option>
+  </select>
         </label>
+        
+
+        
+       
+
+
+{/* 
+<div>
+      <h1>Choose an Option</h1>
+      <select value={formData.type} onChange={handleChange}>
+        <option value="" disabled>Select Yes or No</option>
+        <option value="WFH">WFH</option>
+        <option value="Nghi phep">Nghi Phep</option>
+      </select>
+      {formData.type && <p>You selected: {formData.type}</p>}
+    </div> */}
+
+
+
+
+
         <br />
         <label>
           Reason:
