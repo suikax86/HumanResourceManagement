@@ -1,138 +1,181 @@
-// src/ContactForm.js
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import './DonXinNghi.scss';
 function DonXinNghi() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({
+    employeeId: '',
+    name: '',
+    phone: '',
+    dayRest: '',
+    dateBackToWork: '',
+    type: '',
+    reason: ''
+  });
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     alert(`Form submitted!\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
-    //     // Here you can handle the form data, such as sending it to a server
-    // };
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const handleTypeChange = (event) => {
+    setSelectedOption(event.target.value);
+    console.log('Selected option:', event.target.value);
+  };
+
+  const [responseMessage, setResponseMessage] = useState('');
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+  const today = new Date().toISOString().split('T')[0];
+
+  // Function to validate the date inputs
+  const isDayRestValid = formData.dayRest === '' || formData.dateBackToWork === '' || formData.dayRest <= formData.dateBackToWork;
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post('http://localhost:8081/api/forms', formData)
+      .then(response => {
+        setResponseMessage('Form submitted successfully!');
+        setError('');
+        // Optionally reset the form
+        setFormData({
+          employeeId: '',
+          name: '',
+          phone: '',
+          dayRest: '',
+          dateBackToWork: '',
+          type: '',
+          reason: ''
+        });
+      })
+      .catch(err => {
+        setError('Error submitting form.');
+        setResponseMessage('');
+      });
+  };
+
+  return (
+    <div>
+      <h1>Submit a Form</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Employee ID:
+          <input
+            type="number"
+            name="employeeId"
+            value={formData.employeeId}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Phone:
+          <input
+            type="text"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Day Rest:
+          <input
+            type="date"
+            name="dayRest"
+            value={formData.dayRest}
+            onChange={handleChange}
+            required
+          min={today} // Sets the min allowable date to today
+          max={formData.dateBackToWork} // Sets the max allowable date to Date Back to Work
+          />
+        </label>
+        <br />
+        <label>
+          Date Back to Work:
+          <input
+            type="date"
+            name="dateBackToWork"
+            value={formData.dateBackToWork}
+            onChange={handleChange}
+            required
+          />
+        </label>
+
+        {!isDayRestValid && (
+        <p style={{ color: 'red' }}>Day Rest cannot be later than Date Back to Work.</p>
+      )}
+        <br />
+        <label>
+        <select
+    name="type"
+    value={formData.type}
+    onChange={handleChange}
+    required
+  >
+    <option value="" disabled>Type of rest</option>
+    <option value="WFH">WFH</option>
+    <option value="Nghi Phep">Nghỉ phép</option>
+    <option value="Khac">Lý do riêng</option>
+  </select>
+        </label>
+        
+
+        
+       
+
+
+{/* 
+<div>
+      <h1>Choose an Option</h1>
+      <select value={formData.type} onChange={handleChange}>
+        <option value="" disabled>Select Yes or No</option>
+        <option value="WFH">WFH</option>
+        <option value="Nghi phep">Nghi Phep</option>
+      </select>
+      {formData.type && <p>You selected: {formData.type}</p>}
+    </div> */}
 
 
 
-    const [selecteRestdDay, setSelectedRestDay] = useState('');
-    const [selecteWorkdDay, setSelectedWorkDay] = useState('');
 
-    const handleRestDayChange = (event) => {
-        setSelectedRestDay(event.target.value);
-    };
-    const handleWorkDayChange = (event) => {
-        setSelectedWorkDay(event.target.value);
-    };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert(`Selected Day: ${selecteRestdDay}`);
-    };
-
-    return (
-        <form onSubmit={handleSubmit} style={styles.form}>
-            <div style={styles.formGroup}>
-                <label htmlFor="name">Name:</label>
-                <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    style={styles.input}
-                    required
-                />
-            </div>
-            <div style={styles.formGroup}>
-                <label htmlFor="number">Số điện thoại:</label>
-                <input
-                    // type="email"
-                    id="phoneNumber"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={styles.input}
-                    required
-                />
-            </div>
-
-            <div style={styles.formGroup}>
-                <label htmlFor="day">Ngày bắt đầu nghỉ:</label>
-                <input
-                    type="date"
-                    id="day"
-                    value={selecteRestdDay}
-                    onChange={handleRestDayChange}
-                    style={styles.input}
-                    required
-                />
-            </div>
-
-            <div style={styles.formGroup}>
-                <label htmlFor="day">Ngày đi làm lại:</label>
-                <input
-                    type="date"
-                    id="day"
-                    value={selecteWorkdDay}
-                    onChange={handleWorkDayChange}
-                    style={styles.input}
-                    required
-                />
-            </div>
-            
-            <div style={styles.formGroup}>
-                <label htmlFor="message">Lý do xin nghỉ:</label>
-                <textarea
-                    id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    style={styles.textarea}
-                    rows="4"
-                    required
-                />
-            </div>
-            <button type="submit" style={styles.button}>Submit</button>
-        </form>
-    );
+        <br />
+        <label>
+          Reason:
+          <input
+            type="text"
+            name="reason"
+            value={formData.reason}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <button type="submit"  disabled={!isDayRestValid}>Submit</button>
+      </form>
+      {responseMessage && <p>{responseMessage}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+    </div>
+  );
 }
-
-const styles = {
-    form: {
-        maxWidth: '400px',
-        margin: '0 auto',
-        padding: '20px',
-        borderRadius: '5px',
-        backgroundColor: '#f4f4f4',
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-    },
-    formGroup: {
-        marginBottom: '15px',
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        fontSize: '14px',
-        borderRadius: '4px',
-        border: '1px solid #ccc',
-        boxSizing: 'border-box',
-    },
-    textarea: {
-        width: '100%',
-        padding: '10px',
-        fontSize: '14px',
-        borderRadius: '4px',
-        border: '1px solid #ccc',
-        boxSizing: 'border-box',
-        resize: 'none',
-    },
-    button: {
-        width: '100%',
-        padding: '10px 15px',
-        backgroundColor: '#5cb85c',
-        color: 'white',
-        fontSize: '16px',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-    }
-};
 
 export default DonXinNghi;
