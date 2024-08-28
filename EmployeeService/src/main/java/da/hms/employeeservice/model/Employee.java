@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -40,6 +42,10 @@ public class Employee {
 
     @OneToOne(mappedBy = "employee")
     private Account account;
+
+    // when an employee is deleted, all forms associated with the employee are deleted
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Form> forms;
 
     public Employee() {
         this.rewardPoints = 0;

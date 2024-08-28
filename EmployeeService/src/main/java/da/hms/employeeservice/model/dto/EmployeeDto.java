@@ -18,6 +18,9 @@ public class EmployeeDto {
     private String bankNumber;
     private double rewardPoints;
 
+    public EmployeeDto() {
+    }
+
     public EmployeeDto(Long Id, String name, String email, String role, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber, double rewardPoints) {
         this.id = Id;
         this.name = name;
