@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "API-Collection",
+  "name": "API-Collection-HRM-Project",
   "type": "collection",
   "ignore": [
     "node_modules",

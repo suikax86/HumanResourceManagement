@@ -1,12 +1,14 @@
 package da.hms.employeeservice.model;
 
+import da.hms.employeeservice.model.enums.AccountStatus;
 import jakarta.persistence.*;
-import lombok.Data;
-
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +17,8 @@ public class Account {
     private String username;
 
     private String password;
+
+    private AccountStatus status = AccountStatus.ACTIVE;
 
     @OneToOne
     @JoinColumn(name = "employee_id")
