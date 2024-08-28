@@ -1,0 +1,24 @@
+meta {
+  name: Update Employee
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:8080/api/employees/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Long Huynh",
+      "email": "suikax86@gmail.com",
+      "idNumber": "437179775954",
+      "taxNumber": "3042746957285",
+      "address": "Quan 12, TP HCM",
+      "phoneNumber": "0129150316",
+      "bankName": "TP Bank",
+      "bankNumber": "0129150316"
+  }
+}
