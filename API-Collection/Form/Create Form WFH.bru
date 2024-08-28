@@ -1,0 +1,21 @@
+meta {
+  name: Create Form WFH
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8081/api/forms/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "employeeId": 1,
+    "startDate": "2024-08-28",
+    "endDate": "2024-08-28",
+    "formType": "WFH",
+    "reason": "Xin làm việc tại nhà theo quy định công ty"
+  }
+}
