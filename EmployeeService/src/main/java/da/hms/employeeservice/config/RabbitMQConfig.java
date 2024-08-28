@@ -33,7 +33,7 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue emailQueue() {
-        return new Queue("emailQueue1", true);
+        return new Queue("emailQueue");
     }
 
     @Bean
