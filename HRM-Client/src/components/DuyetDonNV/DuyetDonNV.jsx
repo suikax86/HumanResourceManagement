@@ -22,7 +22,7 @@ function DuyetDonNV() {
 
   
     useEffect(() => {
-        fetch('http://localhost:8081/api/forms')
+        fetch('http://localhost:8080/api/forms/')
           .then(response => {
             if (!response.ok) {
               throw new Error('Network response was not ok');
@@ -140,14 +140,18 @@ function DuyetDonNV() {
 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Stt</th>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Id Nhân viên</th>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Name</th>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Nghỉ từ ngày</th>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Ngày đi làm lại</th>
-            <th style={{ border: '1px solid black', padding: '10px' }}>Loại Nghỉ</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Mã đơn</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Mã nhân viên</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Tên nhân viên</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Ngày bắt đầu</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Ngày kết thúc</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Loại đơn</th>
             <th style={{ border: '1px solid black', padding: '10px' }}>Lý Do</th>
-            <th style={{ border: '1px solid black', padding: '10px' }}>tình trạng đơn</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Mã người duyệt</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Người Duyệt</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Tình trạng đơn</th>
+            <th style={{ border: '1px solid black', padding: '10px' }}>Bình luận</th>
+
           </tr>
         </thead>
         <tbody>
@@ -163,15 +167,20 @@ function DuyetDonNV() {
               <td style={{ border: '1px solid black', padding: '10px'  }}>{person.id}</td>
               <td style={{ border: '1px solid black', padding: '10px'  }}>{person.employeeId}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.name}</td>
-              <td style={{ border: '1px solid black', padding: '10px' }}>{person.dayRest}</td>
-              <td style={{ border: '1px solid black', padding: '10px' }}>{person.dateBackToWork}</td>
-              <td style={{ border: '1px solid black', padding: '10px' }}>{person.type}</td>
+              <td style={{ border: '1px solid black', padding: '10px' }}>{person.startDate}</td>
+              <td style={{ border: '1px solid black', padding: '10px' }}>{person.endDate}</td>
+              <td style={{ border: '1px solid black', padding: '10px' }}>{person.formType}</td>
               <td style={{ border: '1px solid black', padding: '10px' }}>{person.reason}</td>
+              <td style={{ border: '1px solid black', padding: '10px' }}>{person.approverId}</td>
+              <td style={{ border: '1px solid black', padding: '10px' }}>{person.approverName}</td>
               <td style={{ border: '1px solid black', padding: '10px', backgroundColor:
-      person.formCondition === 'Pending' ? 'purple' :
-      person.formCondition === 'Approved' ? 'green' :
-      person.formCondition === 'Denied' ? 'red' : 'white' }}>{person.formCondition}</td>
+      person.formCondition === 'PENDING' ? 'purple' :
+      person.formCondition === 'APPROVED' ? 'green' :
+      person.formCondition === 'REJECTED' ? 'red' : 'white' }}>{person.formStatus}</td>
+              <td style={{ border: '1px solid black', padding: '10px' }}>{person.comment}</td>
+
             </tr>
+            
           ))}
         </tbody>
       </table>
