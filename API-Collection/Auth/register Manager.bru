@@ -1,0 +1,26 @@
+meta {
+  name: register Manager
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/api/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "suikax86@outlook.com",
+    "password": "Demo123",
+    "role": "MANAGER",
+    "name": "Long Huynh",
+    "idNumber": "437179775951",
+    "taxNumber": "3042746957285",
+    "address": "Quan 12, TP HCM",
+    "phoneNumber": "0129150316",
+    "bankName": "TP Bank",
+    "bankNumber": "0129150316"
+  }
+}

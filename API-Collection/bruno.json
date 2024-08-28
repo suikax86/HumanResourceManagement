@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "API-Collection-HRM-Project",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
