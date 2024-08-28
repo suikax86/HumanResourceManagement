@@ -15,6 +15,10 @@ spring:
           uri: lb://EMPLOYEESERVICE
           predicates:
             - Path=/api/auth/**
+        - id: form-route
+          uri: lb://EMPLOYEESERVICE
+          predicates:
+            - Path=/api/forms/**
         - id: reward-points-profile-route
           uri: lb://REWARDSPOINTSSERVICE
           predicates:
