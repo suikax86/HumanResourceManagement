@@ -22,8 +22,18 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue employeeDeletedQueue() {
+        return new Queue("employeeDeletedQueue");
+    }
+
+    @Bean
     public Binding bindingEmployeeCreatedQueue(@Qualifier("employeeCreatedQueue") Queue employeeCreatedQueue, TopicExchange employeeExchange) {
         return BindingBuilder.bind(employeeCreatedQueue).to(employeeExchange).with("employee.created");
+    }
+
+    @Bean
+    public Binding bindingEmployeeDeletedQueue(@Qualifier("employeeDeletedQueue") Queue employeeDeletedQueue, TopicExchange employeeExchange) {
+        return BindingBuilder.bind(employeeDeletedQueue).to(employeeExchange).with("employee.deleted");
     }
 
     @Bean

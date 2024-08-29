@@ -28,6 +28,15 @@ public class RewardPointsProfileController {
         }
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllRewardPoints() {
+        try {
+            return ResponseEntity.ok(rewardPointsRepository.findAll());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + e.getMessage());
+        }
+    }
+
     @PutMapping("/{employeeId}")
     public RewardPointsProfile updateRewardPoints(@PathVariable Long employeeId, @RequestBody RewardPointsProfile rewardPoints) {
         Optional<RewardPointsProfile> existingRewardPoints = rewardPointsRepository.findByEmployeeId(employeeId);

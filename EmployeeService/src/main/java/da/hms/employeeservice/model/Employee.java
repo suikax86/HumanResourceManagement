@@ -47,8 +47,10 @@ public class Employee {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Form> forms;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Timesheet> timesheets;
+
     public Employee() {
-        this.rewardPoints = 0;
     }
 
     public Employee(String name, String email, String idNumber, String taxNumber, String address, String phoneNumber, String bankName, String bankNumber) {
@@ -60,6 +62,5 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.bankName = bankName;
         this.bankNumber = bankNumber;
-        this.rewardPoints = 0;
     }
 }
