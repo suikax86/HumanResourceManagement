@@ -1,0 +1,21 @@
+meta {
+  name: Update Employee Simpler
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/api/employees/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "taxNumber": "3042746957285",
+      "address": "Quan 12, TP HCM",
+      "phoneNumber": "0129150316",
+      "bankName": "Kien Long Bank",
+      "bankNumber": "0129150316"
+  }
+}
