@@ -14,6 +14,9 @@
         <module name="EmployeeService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="VoucherService" target="21" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,6 +26,7 @@
       <module name="EmployeeService" options="-parameters" />
       <module name="EurekaServer" options="-parameters" />
       <module name="RewardsPointsService" options="-parameters" />
+      <module name="VoucherService" options="-parameters" />
     </option>
   </component>
 </project>

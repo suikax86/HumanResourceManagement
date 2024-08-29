@@ -1,0 +1,36 @@
+.VoucherList_container{
+  height: 80vh;
+  width: 100%;
+  .Category{
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    .Category_name{
+      border-radius: 50px;
+      border:1px solid black ;
+      padding: 10px;
+      cursor: pointer;
+      &:hover{
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+  .Voucher{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 50px;
+    margin-top: 50px;
+    .Voucher_detail{
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 20px;
+      cursor: pointer;
+      .Voucher_brand{
+        font-weight: bold;
+        font-size: 30px;
+      }
+    }
+  }
+}
