@@ -25,5 +25,6 @@ public class RabbitMQConfig {
     public Binding binding(Queue employeeAddedQueue, TopicExchange employeeExchange) {
         return BindingBuilder.bind(employeeAddedQueue).to(employeeExchange).with("employee.created");
     }
-
 }
+
+
