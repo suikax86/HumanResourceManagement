@@ -8,5 +8,6 @@
     <file url="file://$PROJECT_DIR$/EmployeeService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/EurekaServer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/RewardsPointsService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VoucherService/src/main/java" charset="UTF-8" />
   </component>
 </project>
