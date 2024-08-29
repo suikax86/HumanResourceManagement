@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage/HomePage.jsx';
 import MyProfile from './pages/MyProfile/MyProfile.jsx';
 import DonXinNghi from './pages/DonXinNghi/Don.jsx';
 import WorkFromHome from './pages/WorkFromHome/WorkHome.jsx';
+import VoucherPage from './pages/VoucherPage/VoucherPage.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exac path="/MyProfile" element={<MyProfile />} />
         <Route exac path="/DonXinNghi" element={<DonXinNghi />} />
         <Route exac path="/WorkFromHome" element={<WorkFromHome />} />
+        <Route exac path="/Voucher" element={<VoucherPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
