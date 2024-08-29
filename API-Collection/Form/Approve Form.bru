@@ -1,11 +1,11 @@
 meta {
   name: Approve Form
   type: http
-  seq: 4
+  seq: 5
 }
 
 put {
-  url: http://localhost:8080/api/forms/2
+  url: http://localhost:8080/api/forms/1
   body: json
   auth: none
 }
@@ -14,6 +14,6 @@ body:json {
   {
     "approverId": 2,
     "formStatus": "APPROVED",
-    "comment": "Ok"
+    "comment": "Ok em"
   }
 }
