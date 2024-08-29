@@ -1,14 +1,18 @@
 package da.hms.employeeservice.controller;
 
+import da.hms.employeeservice.client.EmailInfo;
 import da.hms.employeeservice.model.Account;
 import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.Role;
+import da.hms.employeeservice.model.dto.AccountDto;
 import da.hms.employeeservice.model.dto.LoginDto;
 import da.hms.employeeservice.model.dto.RegisterDto;
+import da.hms.employeeservice.model.enums.AccountStatus;
 import da.hms.employeeservice.repository.AccountRepository;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import da.hms.employeeservice.repository.RoleRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +20,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
+@Slf4j
 public class AuthController {
 
     private final EmployeeRepository employeeRepository;
@@ -52,7 +59,7 @@ public class AuthController {
         }
 
         // Check if the employee already exists by idNumber
-        if(employeeRepository.existsByIdNumber(registerDto.getIdNumber())) {
+        if (employeeRepository.existsByIdNumber(registerDto.getIdNumber())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Employee with the same idNumber already exists");
         }
 
@@ -81,7 +88,8 @@ public class AuthController {
         accountRepository.save(account);
 
         // Publish message to RabbitMQ exchange
-        rabbitTemplate.convertAndSend("employeeExchange","employee.created",savedEmployee.getId());
+        log.info("Sending employeeId to RabbitMQ: {}", savedEmployee.getId());
+        rabbitTemplate.convertAndSend("employeeExchange", "employee.created", savedEmployee.getId());
 
         return new ResponseEntity<>("Registration successful", HttpStatus.CREATED);
     }
@@ -89,11 +97,19 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody LoginDto loginDto) {
         Account account = accountRepository.findByUsername(loginDto.getEmail());
+
         if (account == null || !passwordEncoder.matches(loginDto.getPassword(), account.getPassword())) {
             Map<String, Object> errorResponse = new HashMap<>();
             errorResponse.put("error", "Invalid email or password");
             return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
         }
+
+        if (account.getStatus().equals(AccountStatus.INACTIVE)) {
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Account deactivated");
+            return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
+        }
+
         Map<String, Object> response = new HashMap<>();
         response.put("accountId", account.getId());
         response.put("employeeId", account.getEmployee().getId());
@@ -101,13 +117,64 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/isManager/{accountId}")
-    public ResponseEntity<Boolean> isManager(@PathVariable Long accountId) {
-        Account account = accountRepository.findById(accountId).orElse(null);
-        if (account == null) {
-            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
-        }
-        boolean isManager = "MANAGER".equals(account.getRole().getName());
-        return new ResponseEntity<>(isManager, HttpStatus.OK);
+    @GetMapping("/getRole/{accountId}")
+    public ResponseEntity<String> getRole(@PathVariable Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
+        return new ResponseEntity<>(account.getRole().getName(), HttpStatus.OK);
     }
+
+    @GetMapping("/")
+    public List<AccountDto> getAccounts() {
+        //Get all account dto
+        List<Account> accounts = accountRepository.findAll();
+        List<AccountDto> accountDtos = new ArrayList<>();
+        for(Account account : accounts) {
+            AccountDto accountDto = new AccountDto();
+            accountDto.setId(account.getId());
+            accountDto.setUsername(account.getUsername());
+            accountDto.setRole(account.getRole().getName());
+            accountDto.setEmployeeId(account.getEmployee().getId());
+            accountDtos.add(accountDto);
+        }
+        return accountDtos;
+    }
+
+    @DeleteMapping("/{accountId}")
+    public ResponseEntity<String> deactivateAccount(@PathVariable Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
+
+        if (account.getStatus().equals(AccountStatus.INACTIVE)) {
+            return new ResponseEntity<>("Account already deactivated", HttpStatus.OK);
+        }
+        account.setStatus(AccountStatus.INACTIVE);
+        accountRepository.save(account);
+        return new ResponseEntity<>("Account deactivated", HttpStatus.OK);
+    }
+
+    @PutMapping("/reactive/{accountId}")
+    public ResponseEntity<String> reactiveAccount(@PathVariable Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
+
+        //check if account is already active
+        if (account.getStatus().equals(AccountStatus.ACTIVE)) {
+            return new ResponseEntity<>("Account already active", HttpStatus.OK);
+        }
+        account.setStatus(AccountStatus.ACTIVE);
+        accountRepository.save(account);
+        return new ResponseEntity<>("Account activated", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{accountId}")
+    public ResponseEntity<String> deleteHardAccount(@PathVariable Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
+        // delete account and employee profile of the account
+
+        Long employeeId = account.getEmployee().getId();
+        accountRepository.delete(account);
+        employeeRepository.deleteById(employeeId);
+        rabbitTemplate.convertAndSend("employeeExchange", "employee.deleted", employeeId);
+
+        return new ResponseEntity<>("Account deleted", HttpStatus.OK);
+    }
+
 }

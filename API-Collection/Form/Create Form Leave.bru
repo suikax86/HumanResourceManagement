@@ -1,0 +1,21 @@
+meta {
+  name: Create Form Leave
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8081/api/forms/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "employeeId": 1,
+    "startDate": "2024-08-28",
+    "endDate": "2024-08-28",
+    "formType": "LEAVE",
+    "reason": "Xin nghỉ vì mắc covid"
+  }
+}

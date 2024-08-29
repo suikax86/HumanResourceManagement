@@ -10,17 +10,12 @@
         <option value="$PROJECT_DIR$/RewardsPointsService/pom.xml" />
         <option value="$PROJECT_DIR$/APIGateway/pom.xml" />
         <option value="$PROJECT_DIR$/API-Gateway/pom.xml" />
-<<<<<<< Updated upstream
-=======
         <option value="$PROJECT_DIR$/EmailService/pom.xml" />
-        <option value="$PROJECT_DIR$/VoucherService/pom.xml" />
->>>>>>> Stashed changes
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/APIGateway/pom.xml" />
-        <option value="$PROJECT_DIR$/VoucherService/pom.xml" />
       </set>
     </option>
   </component>

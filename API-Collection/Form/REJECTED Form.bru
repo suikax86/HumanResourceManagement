@@ -1,0 +1,19 @@
+meta {
+  name: REJECTED Form
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:8080/api/forms/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "approverId": 2,
+    "formStatus": "REJECTED",
+    "comment": "Nhân viên đã quá số ngày quy định trong tháng"
+  }
+}

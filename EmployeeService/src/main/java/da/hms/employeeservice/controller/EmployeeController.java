@@ -3,11 +3,11 @@ package da.hms.employeeservice.controller;
 import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.dto.AddEmployeeDto;
 import da.hms.employeeservice.model.dto.EmployeeDto;
+import da.hms.employeeservice.model.dto.UpdateEmployeeDto;
 import da.hms.employeeservice.repository.EmployeeRepository;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,11 +19,9 @@ import java.util.List;
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
-    private final RabbitTemplate rabbitTemplate;
 
-    public EmployeeController(EmployeeRepository employeeRepository, RabbitTemplate rabbitTemplate) {
+    public EmployeeController(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.rabbitTemplate = rabbitTemplate;
     }
 
     @GetMapping("/")
@@ -31,13 +29,18 @@ public class EmployeeController {
         List<Employee> employees =  employeeRepository.findAll();
         List<EmployeeDto> employeeDtos = new ArrayList<>();
         for(Employee employee : employees) {
+            String role = "";
+            double points = -1;
             try {
-                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0));
+                if(employee.getAccount() != null && employee.getAccount().getRole() != null) {
+                    role = employee.getAccount().getRole().getName();
+                }
+                employeeDtos.add(new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),role, employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
             }
             catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
-                int points = -1;
-                employeeDtos.add(new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
+
+                employeeDtos.add(new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),role, employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points));
             }
         }
         return employeeDtos;
@@ -50,55 +53,54 @@ public class EmployeeController {
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
         } else {
+            String role = "";
+            double points = -1;
             try{
-                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), 0);
+                if (employee.getAccount() != null && employee.getAccount().getRole() != null) {
+                    role = employee.getAccount().getRole().getName();
+                }
+                employeeDto = new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),role, employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
             } catch (Exception e) {
                 System.err.println("Failed to fetch reward points: " + e.getMessage());
-                int points = -1;
-                employeeDto = new EmployeeDto(employee.getName(), employee.getEmail(), employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
+
+                employeeDto = new EmployeeDto(employee.getId(),employee.getName(), employee.getEmail(),role, employee.getIdNumber(), employee.getTaxNumber(), employee.getAddress(), employee.getPhoneNumber(), employee.getBankName(), employee.getBankNumber(), points);
             }
             return employeeDto;
         }
     }
 
     @PutMapping("/{id}")
-    public Employee updateEmployee(@PathVariable Long id, @Valid @RequestBody AddEmployeeDto employeeDto) {
-        Employee employee = this.employeeRepository.findById(id).orElse(null);
+    public ResponseEntity<String> updateEmployee(@PathVariable Long id, @Valid @RequestBody UpdateEmployeeDto employeeDto) {
+        Employee employee = this.employeeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
 
-        if (employee == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
+        // check if fields are null or empty and blank to avoid overwriting existing data
+        if (employeeDto.getName() != null && !employeeDto.getName().isBlank()) {
+            employee.setName(employeeDto.getName());
+        }
+        if (employeeDto.getEmail() != null && !employeeDto.getEmail().isBlank()) {
+            employee.setEmail(employeeDto.getEmail());
+        }
+        if (employeeDto.getIdNumber() != null && !employeeDto.getIdNumber().isBlank()) {
+            employee.setIdNumber(employeeDto.getIdNumber());
+        }
+        if (employeeDto.getTaxNumber() != null && !employeeDto.getTaxNumber().isBlank()) {
+            employee.setTaxNumber(employeeDto.getTaxNumber());
+        }
+        if (employeeDto.getAddress() != null && !employeeDto.getAddress().isBlank()) {
+            employee.setAddress(employeeDto.getAddress());
+        }
+        if (employeeDto.getPhoneNumber() != null && !employeeDto.getPhoneNumber().isBlank()) {
+            employee.setPhoneNumber(employeeDto.getPhoneNumber());
+        }
+        if (employeeDto.getBankName() != null && !employeeDto.getBankName().isBlank()) {
+            employee.setBankName(employeeDto.getBankName());
+        }
+        if (employeeDto.getBankNumber() != null && !employeeDto.getBankNumber().isBlank()) {
+            employee.setBankNumber(employeeDto.getBankNumber());
         }
 
-        employee.setName(employeeDto.getName());
-        employee.setEmail(employeeDto.getEmail());
-        employee.setIdNumber(employeeDto.getIdNumber());
-        employee.setTaxNumber(employeeDto.getTaxNumber());
-        employee.setAddress(employeeDto.getAddress());
-        employee.setPhoneNumber(employeeDto.getPhoneNumber());
-        employee.setBankNumber(employeeDto.getBankNumber());
-
-        return employeeRepository.save(employee);
-    }
-
-    @GetMapping("/checkActivated/{id}")
-    public boolean checkActivated(@PathVariable Long id) {
-        Employee employee = this.employeeRepository.findById(id).orElseThrow(() ->
-            new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
-        return employee.getIsActivated();
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void deleteEmployee(@PathVariable Long id) {
-        Employee employee = this.employeeRepository.findById(id).orElse(null);
-
-        if (employee == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found");
-        }
-
-        employee.setIsActivated(false);
-        employeeRepository.save(employee);
-
+        this.employeeRepository.save(employee);
+        return new ResponseEntity<>("Employee updated", HttpStatus.OK);
     }
 
 }

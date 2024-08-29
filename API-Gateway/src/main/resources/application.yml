@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: API-Gateway
+  output:
+    ansi:
+      enabled: ALWAYS
+  cloud:
+    gateway:
+      routes:
+        - id: employee-route
+          uri: lb://EMPLOYEESERVICE
+          predicates:
+            - Path=/api/employees/**
+        - id: auth-route
+          uri: lb://EMPLOYEESERVICE
+          predicates:
+            - Path=/api/auth/**
+        - id: form-route
+          uri: lb://EMPLOYEESERVICE
+          predicates:
+            - Path=/api/forms/**
+        - id: timesheet-route
+          uri: lb://EMPLOYEESERVICE
+          predicates:
+            - Path=/api/timesheets/**
+        - id: reward-points-profile-route
+          uri: lb://REWARDSPOINTSSERVICE
+          predicates:
+            - Path=/api/reward-points-profile/**
+        - id: email-route
+          uri: lb://EMAILSERVICE
+          predicates:
+            - Path=/api/email/**
+  
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: DEBUG
+
+server:
+  port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
