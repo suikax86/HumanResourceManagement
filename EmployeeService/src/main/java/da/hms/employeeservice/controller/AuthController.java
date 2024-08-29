@@ -142,7 +142,7 @@ public class AuthController {
     @DeleteMapping("/{accountId}")
     public ResponseEntity<String> deactivateAccount(@PathVariable Long accountId) {
         Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
-        //check if account is already inactive
+
         if (account.getStatus().equals(AccountStatus.INACTIVE)) {
             return new ResponseEntity<>("Account already deactivated", HttpStatus.OK);
         }
