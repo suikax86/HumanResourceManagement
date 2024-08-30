@@ -2,16 +2,22 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './DonXinNghi.scss';
 function DonXinNghi() {
+
+
+  const EmployeeInfo = localStorage.getItem('userInfo');
+  const user = JSON.parse(EmployeeInfo);
+
   const [formData, setFormData] = useState({
-    employeeId: '',
-    name: '',
-    phone: '',
-    dayRest: '',
-    dateBackToWork: '',
-    type: '',
+    employeeId: user.employeeId,
+    // name: '',
+    // phone: '',
+    startDate: '',
+    endDate: '',
+    formType: '',
     reason: ''
   });
 
+  
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleTypeChange = (event) => {
@@ -32,24 +38,25 @@ function DonXinNghi() {
   const today = new Date().toISOString().split('T')[0];
 
   // Function to validate the date inputs
-  const isDayRestValid = formData.dayRest === '' || formData.dateBackToWork === '' || formData.dayRest <= formData.dateBackToWork;
+  const isDayRestValid = formData.startDate === '' || formData.endDate === '' || formData.startDate <= formData.endDate;
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    axios.post('http://localhost:8081/api/forms', formData)
+    console.log("formData", formData);
+    
+    axios.post('http://localhost:8080/api/forms/', formData)
       .then(response => {
         setResponseMessage('Form submitted successfully!');
         setError('');
         // Optionally reset the form
         setFormData({
           employeeId: '',
-          name: '',
-          phone: '',
-          dayRest: '',
-          dateBackToWork: '',
-          type: '',
+          // name: '',
+          // phone: '',
+          startDate: '',
+          endDate: '',
+          formType: '',
           reason: ''
         });
       })
@@ -74,7 +81,9 @@ function DonXinNghi() {
           />
         </label>
         <br />
-        <label>
+
+
+        {/* <label>
           Name:
           <input
             type="text"
@@ -94,18 +103,20 @@ function DonXinNghi() {
             onChange={handleChange}
             required
           />
-        </label>
+        </label> */}
+
+
         <br />
         <label>
           Day Rest:
           <input
             type="date"
-            name="dayRest"
-            value={formData.dayRest}
+            name="startDate"
+            value={formData.startDate}
             onChange={handleChange}
             required
           min={today} // Sets the min allowable date to today
-          max={formData.dateBackToWork} // Sets the max allowable date to Date Back to Work
+          max={formData.startDate} // Sets the max allowable date to Date Back to Work
           />
         </label>
         <br />
@@ -113,8 +124,8 @@ function DonXinNghi() {
           Date Back to Work:
           <input
             type="date"
-            name="dateBackToWork"
-            value={formData.dateBackToWork}
+            name="endDate"
+            value={formData.endDate}
             onChange={handleChange}
             required
           />
@@ -126,8 +137,8 @@ function DonXinNghi() {
         <br />
         <label>
         <select
-    name="type"
-    value={formData.type}
+    name="formType"
+    value={formData.formType}
     onChange={handleChange}
     required
   >
@@ -153,10 +164,6 @@ function DonXinNghi() {
       </select>
       {formData.type && <p>You selected: {formData.type}</p>}
     </div> */}
-
-
-
-
 
         <br />
         <label>
