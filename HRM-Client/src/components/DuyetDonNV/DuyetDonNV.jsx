@@ -7,10 +7,13 @@ function DuyetDonNV() {
     const [forms, setForms] = useState([]);
     const [error, setError] = useState('');
     const [responseMessage, setResponseMessage] = useState('');
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [comment, setComment] = useState('');
+    const [actionType, setActionType] = useState(''); // New state to track action type
 
     const EmployeeInfo = localStorage.getItem('userInfo');
-  const user = JSON.parse(EmployeeInfo);
+    const user = JSON.parse(EmployeeInfo);
+    
     const [formData, setFormData] = useState({
         id: user.employeeId,
         employeeId: '',
@@ -22,15 +25,6 @@ function DuyetDonNV() {
         formCondition: '',
         reason: ''
     });
-
-    const [approved, setApproved] = useState({ 
-      approverId: "",
-      formStatus: "APPROVED",
-      comment : ""
-
-    });
-    const [isModalOpen,   setIsModalOpen] = useState(false);
-    const [comment, setComment] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:8080/api/forms/')
@@ -45,48 +39,57 @@ function DuyetDonNV() {
     };
 
     const handleApprove = async () => {
-      // Create the approval object
-      const approvalData = {
-          approverId: user.employeeId,
-          formStatus: "APPROVED",
-          comment: comment
-      };
-      console.log("approvalData",approvalData);
-      
-      try {
-          // Make the API call to update the form status
-          await axios.put(`http://localhost:8080/api/forms/${formData.id}`, approvalData);
-  
-          // Update the state with the approved form
-          setForms(forms.map(form => 
-              form.id === formData.id 
-              ? { ...form, formStatus: 'APPROVED', comment } 
-              : form
-          ));
-          
-          // Clear the modal and form data
-          setIsModalOpen(false);
-          setComment('');
-          setResponseMessage('Form approved successfully!');
-      } catch (err) {
-          setError('Error updating form.');
-          setResponseMessage('');
-      }
-  };
-
-    const handleReject = () => {
-        axios.put(`http://localhost:8080/api/forms/${formData.id}`, {
-            ...formData,
-            formCondition: 'Denied'
-        })
-        .then(response => {
-            setResponseMessage('Form rejected successfully!');
-            setForms(forms.map(form => (form.id === formData.id ? { ...form, formStatus: 'REJECTED' } : form)));
-        })
-        .catch(err => {
+        const approvalData = {
+            approverId: user.employeeId,
+            formStatus: "APPROVED",
+            comment: comment
+        };
+        
+        try {
+            await axios.put(`http://localhost:8080/api/forms/${formData.id}`, approvalData);
+            setForms(forms.map(form => 
+                form.id === formData.id 
+                ? { ...form, formStatus: 'APPROVED', comment } 
+                : form
+            ));
+            setIsModalOpen(false);
+            setComment('');
+            setResponseMessage('Form approved successfully!');
+        } catch (err) {
             setError('Error updating form.');
             setResponseMessage('');
-        });
+        }
+    };
+
+    const handleReject = async () => {
+        const rejectionData = {
+            approverId: user.employeeId,
+            formStatus: "REJECTED",
+            comment: comment
+        };
+
+        try {
+            await axios.put(`http://localhost:8080/api/forms/${formData.id}`, rejectionData);
+            setForms(forms.map(form => 
+                form.id === formData.id 
+                ? { ...form, formStatus: 'REJECTED', comment } 
+                : form
+            ));
+            setIsModalOpen(false);
+            setComment('');
+            setResponseMessage('Form rejected successfully!');
+        } catch (err) {
+            setError('Error updating form.');
+            setResponseMessage('');
+        }
+    };
+
+    const handleAction = () => {
+        if (actionType === 'approve') {
+            handleApprove();
+        } else if (actionType === 'reject') {
+            handleReject();
+        }
     };
 
     return (
@@ -133,15 +136,15 @@ function DuyetDonNV() {
             </table>
 
             <div className="button-container">
-                <button onClick={() => setIsModalOpen(true)} className='Duyet'>Duyệt</button>
-                <button onClick={handleReject} className='KoDuyet'>Từ Chối</button>
+                <button onClick={() => { setActionType('approve'); setIsModalOpen(true); }} className='Duyet'>Duyệt</button>
+                <button onClick={() => { setActionType('reject'); setIsModalOpen(true); }} className='KoDuyet'>Từ Chối</button>
             </div>
 
             {isModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h2>Add Comment</h2>
+                            <h2>{actionType === 'approve' ? 'Add Comment for Approval' : 'Add Comment for Rejection'}</h2>
                             <button className="close-button" onClick={() => setIsModalOpen(false)}>×</button>
                         </div>
                         <textarea 
@@ -151,10 +154,7 @@ function DuyetDonNV() {
                             placeholder="Enter your comment here..."
                         />
                         <div className="modal-buttons">
-                            <button onClick={() => {
-                                handleApprove();
-                                setFormData(formData); // Set the formData before making the API call
-                            }} className="approve-button">Approve</button>
+                            <button onClick={handleAction} className="approve-button">{actionType === 'approve' ? 'Approve' : 'Reject'}</button>
                             <button onClick={() => setIsModalOpen(false)} className="cancel-button">Cancel</button>
                         </div>
                     </div>
