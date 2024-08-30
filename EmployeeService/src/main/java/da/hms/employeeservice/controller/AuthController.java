@@ -4,6 +4,7 @@ import da.hms.employeeservice.client.EmailInfo;
 import da.hms.employeeservice.model.Account;
 import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.Role;
+import da.hms.employeeservice.model.dto.AccountDto;
 import da.hms.employeeservice.model.dto.LoginDto;
 import da.hms.employeeservice.model.dto.RegisterDto;
 import da.hms.employeeservice.model.enums.AccountStatus;
@@ -19,7 +20,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -120,10 +123,26 @@ public class AuthController {
         return new ResponseEntity<>(account.getRole().getName(), HttpStatus.OK);
     }
 
+    @GetMapping("/")
+    public List<AccountDto> getAccounts() {
+        //Get all account dto
+        List<Account> accounts = accountRepository.findAll();
+        List<AccountDto> accountDtos = new ArrayList<>();
+        for(Account account : accounts) {
+            AccountDto accountDto = new AccountDto();
+            accountDto.setId(account.getId());
+            accountDto.setUsername(account.getUsername());
+            accountDto.setRole(account.getRole().getName());
+            accountDto.setEmployeeId(account.getEmployee().getId());
+            accountDtos.add(accountDto);
+        }
+        return accountDtos;
+    }
+
     @DeleteMapping("/{accountId}")
     public ResponseEntity<String> deactivateAccount(@PathVariable Long accountId) {
         Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
-        //check if account is already inactive
+
         if (account.getStatus().equals(AccountStatus.INACTIVE)) {
             return new ResponseEntity<>("Account already deactivated", HttpStatus.OK);
         }
@@ -143,6 +162,19 @@ public class AuthController {
         account.setStatus(AccountStatus.ACTIVE);
         accountRepository.save(account);
         return new ResponseEntity<>("Account activated", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{accountId}")
+    public ResponseEntity<String> deleteHardAccount(@PathVariable Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Account not found"));
+        // delete account and employee profile of the account
+
+        Long employeeId = account.getEmployee().getId();
+        accountRepository.delete(account);
+        employeeRepository.deleteById(employeeId);
+        rabbitTemplate.convertAndSend("employeeExchange", "employee.deleted", employeeId);
+
+        return new ResponseEntity<>("Account deleted", HttpStatus.OK);
     }
 
 }
