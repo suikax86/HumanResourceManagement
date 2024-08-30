@@ -1,5 +1,6 @@
 package da.hms.employeeservice.controller;
 
+import da.hms.employeeservice.client.EmailInfo;
 import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.Form;
 import da.hms.employeeservice.model.dto.AddFormDto;
@@ -9,26 +10,35 @@ import da.hms.employeeservice.model.enums.FormStatus;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import da.hms.employeeservice.repository.FormRepository;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
 @RequestMapping("api/forms")
+@Slf4j
 public class FormController {
 
     private final FormRepository formRepository;
     private final EmployeeRepository employeeRepository;
+    private final RabbitTemplate rabbitTemplate;
 
-    public FormController(FormRepository formRepository, EmployeeRepository employeeRepository) {
+    public FormController(FormRepository formRepository, EmployeeRepository employeeRepository, RabbitTemplate rabbitTemplate) {
         this.formRepository = formRepository;
         this.employeeRepository = employeeRepository;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @GetMapping("/")
@@ -75,16 +85,44 @@ public class FormController {
         return new ResponseEntity<>("Form added successfully", HttpStatus.CREATED);
     }
 
+    private String loadEmailTemplate(String title, String message) throws IOException {
+        ClassPathResource resource = new ClassPathResource("templates/emailTemplate.html");
+        String template = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
+        return template.replace("{{title}}", title).replace("{{message}}", message);
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<String> approveForm(@PathVariable Long id, @RequestBody ApproveFormDto approveFormDto) {
+    public ResponseEntity<String> approveForm(@PathVariable Long id, @RequestBody ApproveFormDto approveFormDto) throws IOException {
         Form form = formRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Form not found"));
         Employee approver = employeeRepository.findById(approveFormDto.getApproverId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Approver not found"));
+
+        // Check if the form is already approved or rejected
+        if (form.getFormStatus() != FormStatus.PENDING) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Form already approved or rejected");
+        }
 
         form.setApprover(approver);
         form.setApproverName(approver.getName());
         form.setFormStatus(approveFormDto.getFormStatus());
         form.setComment(approveFormDto.getComment());
         formRepository.save(form);
+
+        String title = "Your " + form.getFormType().toString().toLowerCase() + " form has been " + form.getFormStatus();
+        String message = String.format("Your %s form with Id: %d has been %s with reason: %s",form.getFormType().toString().toLowerCase(), form.getId(), form.getFormStatus().toString().toLowerCase(), form.getComment());
+
+        String emailContent = loadEmailTemplate(
+                title,
+                message
+        );
+
+        EmailInfo emailInfo = new EmailInfo(
+                form.getEmployee().getEmail(),
+                title,
+                emailContent
+        );
+
+        log.info("Sending email to {}", form.getEmployee().getEmail());
+        rabbitTemplate.convertAndSend("emailExchange", "email.sent", emailInfo);
 
         return new ResponseEntity<>(String.format("Form %s successfully",approveFormDto.getFormStatus()), HttpStatus.OK);
     }
@@ -95,7 +133,7 @@ public class FormController {
         Form form = formRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Form not found"));
 
         //check if the employee is the owner of the form
-        if (form.getEmployee().getId() != employeeId) {
+        if (!Objects.equals(form.getEmployee().getId(), employeeId)) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not allowed to delete this form");
         }
 

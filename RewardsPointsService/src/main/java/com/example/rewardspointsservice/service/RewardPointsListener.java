@@ -23,5 +23,11 @@ public class RewardPointsListener {
         rewardPointsRepository.save(profile);
     }
 
+    @RabbitListener(queues = "employeeDeletedQueue")
+    public void handleEmployeeDeleted(Long employeeId) {
+        log.info("Employee deleted event received: {}", employeeId);
+        rewardPointsRepository.deleteByEmployeeId(employeeId);
+    }
+
 
 }

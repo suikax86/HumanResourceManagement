@@ -13,7 +13,7 @@ public class EmailListener {
         this.emailService = emailService;
     }
 
-    @RabbitListener(queues = "emailQueue1")
+    @RabbitListener(queues = "emailQueue")
     public void handleEmailSent(EmailInfo emailInfo) {
         emailService.simpleSendEmail(emailInfo);
     }
