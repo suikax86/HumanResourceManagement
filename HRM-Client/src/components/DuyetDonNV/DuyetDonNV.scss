@@ -1,119 +1,44 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
-
-$base-spacing-unit: 24px;
-$half-spacing-unit: calc($base-spacing-unit / 2);
-
-$color-alpha: #1772FF;
-$color-form-highlight: #EEEEEE;
-
-*, *:before, *:after {
-	box-sizing:border-box;
+/* DuyetDonNV.scss */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-body {
-	padding:$base-spacing-unit;
-	font-family:'Source Sans Pro', sans-serif;
-	margin:0;
-}
-.container
-{
-    margin-top: 250px;
-}
-.button-container{
-	display: block;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 500px;
-    height: 100px;
-}
-.Duyet{
-    margin-right: 40px;
+.modal-content {
+    background: white;
     padding: 20px;
-    background-color: #3afa3a;
-   
-
-}
-.KoDuyet{
-    margin-right: 40px;
-    padding: 20px;
-    background-color: #fa3a3a;    
-}
-h1,h2,h3,h4,h5,h6 {
-	margin:0;
+    border-radius: 8px;
+    width: 300px;
+    text-align: left;
+    position: relative;
 }
 
-
-.container {
-	max-width: 1000px;
-	margin-right:auto;
-	margin-left:auto;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	min-height:100vh;
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.table {
-	width:100%;
-	border:1px solid $color-form-highlight; 
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 
-.table-header {
-	display:flex;
-	width:100%;
-	background:#000;
-	padding:($half-spacing-unit * 1.5) 0;
+.modal-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.table-row {
-	display:flex;
-	width:100%;
-	padding:($half-spacing-unit * 1.5) 0;
-	
-	&:nth-of-type(odd) {
-		background:$color-form-highlight;
-	}
-}
-.table-row:active{
-    background-color: #791010;
-}
-
-.table-data, .header__item {
-	flex: 1 1 20%;
-	text-align:center;
-}
-
-.header__item {
-	text-transform:uppercase;
-}
-
-.filter__link {
-	color:white;
-	text-decoration: none;
-	position:relative;
-	display:inline-block;
-	padding-left:$base-spacing-unit;
-	padding-right:$base-spacing-unit;
-	
-	&::after {
-		content:'';
-		position:absolute;
-		right:-($half-spacing-unit * 1.5);
-		color:white;
-		font-size:$half-spacing-unit;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	
-	&.desc::after {
-		content: '(desc)';
-	}
-
-	&.asc::after {
-		content: '(asc)';
-	}
-    
+.modal-buttons button {
+    margin-left: 10px;
 }
