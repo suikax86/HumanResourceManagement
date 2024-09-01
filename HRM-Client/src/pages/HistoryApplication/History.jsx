@@ -1,18 +1,18 @@
-import WorkFromHome from "../../components/WorkFromHome/WorkFromHome.jsx";
+import HistoryApplication from "../../components/HistoryApplication/HistoryApplication.jsx";
 import Header from "../../components/common/Header/Header.jsx";
 import Footer from "../../components/common/Footer/Footer.jsx";
-import "./WorkHome.scss";
+import "./History.scss";
 
-function WorkHome() {
+function History() {
   return (
     <div className="my-profile-container">
       <Header />
       <div className="content">
-        <WorkFromHome />
+        <HistoryApplication />
       </div>
       <Footer />
     </div>
   );
 }
 
-export default WorkHome;
+export default History;

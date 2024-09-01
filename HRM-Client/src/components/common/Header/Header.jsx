@@ -14,8 +14,8 @@ function Header() {
         <NavLink to="/DonXinNghi">
           Xin nghỉ phép
         </NavLink>
-        <NavLink to="/WorkFromHome">
-          Work From Home
+        <NavLink to="/HistoryApplication">
+          Lịch sử đơn xin 
         </NavLink>
         <NavLink to="/DuyetDon">
           Duyệt đơn xin nghỉ
