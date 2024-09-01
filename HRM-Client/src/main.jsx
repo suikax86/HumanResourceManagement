@@ -8,6 +8,7 @@ import DonXinNghi from './pages/DonXinNghi/Don.jsx';
 import DuyetDon from './pages/DuyetDon/DuyetDon.jsx';
 import VoucherPage from './pages/VoucherPage/VoucherPage.jsx';
 import HistoryApplication from './pages/HistoryApplication/History.jsx';
+import EditProfile from './pages/EditProfile/EditProfile.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exac path="/DonXinNghi" element={<DonXinNghi />} />
         <Route exac path="/HistoryApplication" element={<HistoryApplication />} />
         <Route exac path="/DuyetDon" element={<DuyetDon />} />
+        <Route exac path="/EditProfile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
