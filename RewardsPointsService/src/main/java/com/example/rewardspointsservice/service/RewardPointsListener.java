@@ -1,7 +1,5 @@
 package com.example.rewardspointsservice.service;
 
-import com.example.rewardspointsservice.model.RewardPointsProfile;
-import com.example.rewardspointsservice.repository.RewardPointsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
