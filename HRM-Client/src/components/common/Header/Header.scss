@@ -5,22 +5,22 @@
   justify-content: space-around;
   // padding: 20px 0px;
   align-items: center;
-  background-color: rgb(250, 248, 248);
+  background-color: rgb(208, 208, 208);
   .header_container_company_name{
     font-size: 25px;
     font-weight: bold;
+    text-decoration: none;
+    color: black;
   }
   .header_container_nav{
     display: flex;
-    gap: 50px;
+    gap: 100px;
     font-size: 20px;
-    .header_container_nav_work{
-      color:  rgb(76, 124, 255);
+    .header_container_nav_detail{
+      padding: 10px;
       cursor: pointer;
     }
-    .header_container_nav_notwork{
-      cursor: pointer;
-    }
+
   }
   .header_container_button{
     padding: 10px 20px;
@@ -32,4 +32,14 @@
       background-color:  rgb(123, 156, 246);
     }
   }
+}
+.header_dropdown{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 10px;
+}
+.ant-dropdown-menu  {
+  margin-right: 100px;
 }
