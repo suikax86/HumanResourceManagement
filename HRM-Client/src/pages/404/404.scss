@@ -1,0 +1,12 @@
+.page404_container{
+  height: 100vh;
+  width: 100vw;
+  .page404_content{
+    height: 80vh;
+    color: black;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
