@@ -1,28 +1,14 @@
 package da.hms.employeeservice.controller;
 
-import da.hms.employeeservice.client.EmailInfo;
-import da.hms.employeeservice.model.Account;
-import da.hms.employeeservice.model.Employee;
-import da.hms.employeeservice.model.Role;
 import da.hms.employeeservice.model.dto.AccountDto;
 import da.hms.employeeservice.model.dto.LoginDto;
 import da.hms.employeeservice.model.dto.RegisterDto;
-import da.hms.employeeservice.model.enums.AccountStatus;
-import da.hms.employeeservice.repository.AccountRepository;
-import da.hms.employeeservice.repository.EmployeeRepository;
-import da.hms.employeeservice.repository.RoleRepository;
 import da.hms.employeeservice.service.AuthService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,15 +23,12 @@ public class AuthController {
         this.authService = authService;
     }
 
-
     @PostMapping("/register")
     @Transactional
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
-
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody LoginDto loginDto) {
@@ -59,7 +42,7 @@ public class AuthController {
         return new ResponseEntity<>(role, HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<AccountDto> getAccounts() {
         return authService.getAccounts();
     }

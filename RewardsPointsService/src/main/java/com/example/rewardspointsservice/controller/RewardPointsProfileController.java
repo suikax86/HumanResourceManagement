@@ -1,63 +1,35 @@
 package com.example.rewardspointsservice.controller;
 
-import com.example.rewardspointsservice.model.RewardPointsProfile;
-import com.example.rewardspointsservice.repository.RewardPointsRepository;
+import com.example.rewardspointsservice.model.dtos.RewardPointsProfileDto;
+import com.example.rewardspointsservice.service.RewardPointsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/reward-points-profile")
 public class RewardPointsProfileController {
-    private final RewardPointsRepository rewardPointsRepository;
+    private final RewardPointsService rewardPointsService;
 
-    public RewardPointsProfileController(RewardPointsRepository rewardPointsRepository) {
-        this.rewardPointsRepository = rewardPointsRepository;
+    public RewardPointsProfileController(RewardPointsService rewardPointsService) {
+        this.rewardPointsService = rewardPointsService;
     }
 
     @GetMapping("/{employeeId}")
-    public ResponseEntity<?> getRewardPoints(@PathVariable Long employeeId) {
-        try {
-            RewardPointsProfile profile = rewardPointsRepository.findByEmployeeId(employeeId)
-                    .orElseThrow(() -> new RuntimeException("Employee not found"));
-            return ResponseEntity.ok(profile);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + e.getMessage());
-        }
+    public RewardPointsProfileDto getRewardPoints(@PathVariable Long employeeId) {
+        return rewardPointsService.getProfileDto(employeeId);
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllRewardPoints() {
-        try {
-            return ResponseEntity.ok(rewardPointsRepository.findAll());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: " + e.getMessage());
-        }
-    }
-
-    @PutMapping("/{employeeId}")
-    public RewardPointsProfile updateRewardPoints(@PathVariable Long employeeId, @RequestBody RewardPointsProfile rewardPoints) {
-        Optional<RewardPointsProfile> existingRewardPoints = rewardPointsRepository.findByEmployeeId(employeeId);
-        if (existingRewardPoints.isPresent()) {
-            RewardPointsProfile points = existingRewardPoints.get();
-            points.setTotalPoints(rewardPoints.getTotalPoints());
-            return rewardPointsRepository.save(points);
-        } else {
-            throw new RuntimeException("Reward points not found for employeeId: " + employeeId);
-        }
+    public List<RewardPointsProfileDto> getAllRewardPoints() {
+       return rewardPointsService.getAllProfilesDto();
     }
 
     @PostMapping("/create")
     public ResponseEntity<String> createRewardPointsProfile(@RequestBody Long employeeId) {
-        try {
-            RewardPointsProfile profile = new RewardPointsProfile();
-            profile.setEmployeeId(employeeId);
-            rewardPointsRepository.save(profile);
-            return new ResponseEntity<>("Profile created successfully for employee ID: " + employeeId, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Failed to create profile: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        String response = rewardPointsService.createRewardPointsProfile(employeeId);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
