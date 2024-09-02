@@ -16,8 +16,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    <BrowserRouter>
       <Routes>
-        <Route  path="/" element={<HomePage />} />
-        <Route exac path="/Login" element={<Login />} />
+        <Route  path="/" element={<Login />} />
+        <Route exac path="/homepage" element={<HomePage />} />
         <Route exac path="/HomePage" element={<HomePage />} />
         <Route exac path="/MyProfile" element={<MyProfile />} />
         <Route exac path="/DonXinNghi" element={<DonXinNghi />} />
