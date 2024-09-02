@@ -1,4 +1,4 @@
-package com.example.rewardspointsservice.model;
+package com.example.rewardspointsservice.model.dtos;
 
 import lombok.Data;
 

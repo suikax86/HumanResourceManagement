@@ -10,12 +10,11 @@ import da.hms.employeeservice.model.enums.AccountStatus;
 import da.hms.employeeservice.repository.AccountRepository;
 import da.hms.employeeservice.repository.EmployeeRepository;
 import da.hms.employeeservice.repository.RoleRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class AuthService {
     private final EmployeeRepository employeeRepository;
 
@@ -81,6 +81,7 @@ public class AuthService {
         accountRepository.save(account);
 
         // Publish message to RabbitMQ exchange
+        log.info("Sending employeeId to RabbitMQ: {}", savedEmployee.getId());
         rabbitTemplate.convertAndSend("employeeExchange", "employee.created", savedEmployee.getId());
         return "Registration successful";
     }
@@ -153,6 +154,8 @@ public class AuthService {
         Long employeeId = account.getEmployee().getId();
         accountRepository.delete(account);
         employeeRepository.deleteById(employeeId);
+
+        log.info("Sending employeeId {} to RabbitMQ for deletion", employeeId);
         rabbitTemplate.convertAndSend("employeeExchange", "employee.deleted", employeeId);
 
         return "Account deleted";

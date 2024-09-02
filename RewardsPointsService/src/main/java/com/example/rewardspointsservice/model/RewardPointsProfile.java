@@ -1,5 +1,6 @@
 package com.example.rewardspointsservice.model;
 
+import com.example.rewardspointsservice.model.enums.TransactionType;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Document(collection = "rewardPointsProfile")
 @Data
@@ -30,4 +32,6 @@ public class RewardPointsProfile {
         this.totalPoints -= points;
         this.pointsHistory.add(new RewardPointsTransaction(seederId, employeeId, points, TransactionType.SUBTRACT, description, LocalDateTime.now()));
     }
+
+
 }
