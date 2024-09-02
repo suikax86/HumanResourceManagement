@@ -205,7 +205,7 @@ function Header() {
   const nav = useNavigate()
   const logOut = () => {
     localStorage.removeItem('userInfo')
-    nav('/login')
+    nav('/')
   }
   return (
     <div className="header_container">
@@ -320,11 +320,9 @@ function Header() {
         </Dropdown>
        }
       </div>
-      {user ? <div onClick={() => logOut()}>
+       <div onClick={() => logOut()}>
         <button className="header_container_button">Log out</button>
-      </div> : <NavLink to="/login">
-        <button className="header_container_button">Log in</button>
-      </NavLink>}
+      </div>
     </div>
   );
 }
