@@ -1,0 +1,20 @@
+meta {
+  name: List Club Activities
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://www.strava.com/api/v3/clubs/1257078/activities?page=1&per_page=30
+  body: none
+  auth: bearer
+}
+
+params:query {
+  page: 1
+  per_page: 30
+}
+
+auth:bearer {
+  token: 2df81ff52ce3d0b89188458a5d0423208d30cf7c
+}

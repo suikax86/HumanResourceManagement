@@ -1,5 +1,6 @@
 package com.example.rewardspointsservice.model;
 
+import com.example.rewardspointsservice.model.enums.TransactionType;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 

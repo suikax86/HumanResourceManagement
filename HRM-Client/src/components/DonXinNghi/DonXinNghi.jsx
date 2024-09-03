@@ -9,8 +9,6 @@ function DonXinNghi() {
 
   const [formData, setFormData] = useState({
     employeeId: user.employeeId,
-    // name: '',
-    // phone: '',
     startDate: '',
     endDate: '',
     formType: '',
@@ -45,15 +43,13 @@ function DonXinNghi() {
     e.preventDefault();
     console.log("formData", formData);
     
-    axios.post('http://localhost:8080/api/forms/', formData)
+    axios.post('http://localhost:8080/api/forms', formData)
       .then(response => {
         setResponseMessage('Form submitted successfully!');
         setError('');
         // Optionally reset the form
         setFormData({
           employeeId: '',
-          // name: '',
-          // phone: '',
           startDate: '',
           endDate: '',
           formType: '',
@@ -75,40 +71,15 @@ function DonXinNghi() {
           <input
             type="number"
             name="employeeId"
-            value={formData.employeeId}
-            onChange={handleChange}
-            required
+            value={user.employeeId}
+            disabled
           />
         </label>
         <br />
 
-
-        {/* <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
         <br />
         <label>
-          Phone:
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </label> */}
-
-
-        <br />
-        <label>
-          Day Rest:
+          Start Date:
           <input
             type="date"
             name="startDate"
@@ -121,7 +92,7 @@ function DonXinNghi() {
         </label>
         <br />
         <label>
-          Date Back to Work:
+          End Date:
           <input
             type="date"
             name="endDate"
@@ -144,8 +115,7 @@ function DonXinNghi() {
   >
     <option value="" disabled>Type of rest</option>
     <option value="WFH">WFH</option>
-    <option value="Nghi Phep">Nghỉ phép</option>
-    <option value="Khac">Lý do riêng</option>
+    <option value="LEAVE">Nghỉ phép</option>
   </select>
         </label>
         

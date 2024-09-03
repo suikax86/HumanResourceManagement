@@ -28,7 +28,7 @@ function ProfileForm() {
 
   return (
     <div className="profile-form">
-      <h1>Employee Profile</h1>
+      <h1>Hồ sơ của tôi</h1>
       <div className="profile-columns">
         <div className="profile-column">
           <div className="profile-row">
