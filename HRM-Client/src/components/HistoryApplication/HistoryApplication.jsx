@@ -24,7 +24,7 @@ function HistoryApplication() {
 
     // Fetch forms from the API
     const fetchForms = () => {
-        fetch('http://localhost:8080/api/forms/')
+        fetch('http://localhost:8080/api/forms')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
