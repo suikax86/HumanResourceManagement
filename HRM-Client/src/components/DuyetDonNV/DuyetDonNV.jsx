@@ -27,7 +27,7 @@ function DuyetDonNV() {
     });
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/forms/')
+        fetch('http://localhost:8080/api/forms')
             .then(response => response.json())
             .then(data => setForms(data))
             .catch(error => setError(error));

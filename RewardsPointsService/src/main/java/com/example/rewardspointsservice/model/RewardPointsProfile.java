@@ -1,5 +1,6 @@
 package com.example.rewardspointsservice.model;
 
+import com.example.rewardspointsservice.model.enums.TransactionType;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -30,4 +31,6 @@ public class RewardPointsProfile {
         this.totalPoints -= points;
         this.pointsHistory.add(new RewardPointsTransaction(seederId, employeeId, points, TransactionType.SUBTRACT, description, LocalDateTime.now()));
     }
+
+
 }
