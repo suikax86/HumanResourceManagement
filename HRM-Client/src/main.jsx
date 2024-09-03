@@ -17,13 +17,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route exac path="/Login" element={<Login />} />
+        <Route  path="/" element={<Login />} />
         <Route exac path="/HomePage" element={<HomePage />} />
         <Route exac path="/MyProfile" element={<MyProfile />} />
         <Route exac path="/DonXinNghi" element={<DonXinNghi />} />
         <Route exac path="/Voucher" element={<VoucherPage />} />
-        <Route exac path="/DonXinNghi" element={<DonXinNghi />} />
         <Route exac path="/HistoryApplication" element={<HistoryApplication />} />
         <Route exac path="/DuyetDon" element={<DuyetDon />} />
         <Route exac path="/404" element={<Page404 />} />
