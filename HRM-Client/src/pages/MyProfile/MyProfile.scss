@@ -1,7 +1,8 @@
 .my-profile-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
 }
 
 .content {
@@ -10,5 +11,5 @@
 
 .profile-form {
   margin-top: 40px;
+  margin-bottom: 20px;
 }
-

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./EditProfileForm.scss";
+import "../ProfileForm/ProfileForm.scss";
 
 const EditProfileForm = () => {
   const [employee, setEmployee] = useState({
@@ -63,7 +63,7 @@ const EditProfileForm = () => {
   return (
     <>
       <form className="profile-form" onSubmit={handleSubmit}>
-        <h1>Employee Profile</h1>
+        <h1>Sửa hồ sơ của tôi</h1>
         <div>
           <label>Mã nhân viên:</label>
           <input
