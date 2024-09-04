@@ -1,0 +1,87 @@
+.TransferPoint-container{
+  display: flex;
+  height: 80vh;
+  .user-search-list{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    .user-list-title{
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .user-list{
+      height: 40%;
+      width: 80%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      overflow-y: scroll;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 20px;
+      gap: 10px;
+      .user-list-container{
+        width: 80%;
+        display: flex;
+        gap: 80px;
+        padding: 20px;
+        background-color: rgb(197, 198, 198);
+        border-radius: 20px;
+        &:hover{
+          background-color: rgb(244, 239, 239);
+        }
+      }
+    }
+  }
+  .transferpoint{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    .transfer-infor{
+      width: 100%;
+      display: flex;
+      gap:20px;
+      justify-content: center;
+      align-items: center;
+      
+      .transfer-input{
+        width: 40%;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        &:focus{
+          outline: none;
+        }
+      }
+    }
+   .transfer-button{
+    display: flex;
+      gap: 20px;
+      .button-approve{
+        background-color:  rgb(76, 124, 255);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+      }
+      .button-cancel{
+        background-color:  rgb(255, 76, 76);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        text-decoration: none;
+      }
+    } 
+  }
+}

@@ -86,7 +86,7 @@ public class RewardPointsService {
             return "Insufficient points";
         }
 
-        fromProfile.subtractPoints(fromEmployeeId, amount, "Transfer to employee: " + toProfile.getEmployeeName());
+        fromProfile.subtractPoints(toEmployeeId, amount, "Transfer to employee: " + toProfile.getEmployeeName());
 
         String message = "Transfer from employee: " + fromProfile.getEmployeeName();
 
@@ -94,7 +94,7 @@ public class RewardPointsService {
             message = message + " with message: " + msg;
         }
 
-        toProfile.addPoints(toEmployeeId, amount, message);
+        toProfile.addPoints(fromEmployeeId, amount, message);
 
         rewardPointsRepository.save(fromProfile);
         rewardPointsRepository.save(toProfile);

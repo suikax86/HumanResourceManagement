@@ -193,7 +193,7 @@ const pointMa  = [
   {
     key: '2',
     label: (
-      <NavLink to="/" className={'header_dropdown'}>
+      <NavLink to="/transfer-point" className={'header_dropdown'}>
         Chuyển điểm thưởng
         </NavLink>
     ),
