@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 public class RewardPointsTransaction {
@@ -18,6 +19,7 @@ public class RewardPointsTransaction {
     private LocalDateTime timeStamp;
 
     public RewardPointsTransaction(Long senderId, Long receiverId, Double points, TransactionType transactionType, String description, LocalDateTime timeStamp) {
+        this.id = UUID.randomUUID().toString();
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.points = points;

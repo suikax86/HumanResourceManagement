@@ -38,8 +38,14 @@ public class FormService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public List<FormDto> getForms() {
-        List<Form> forms = formRepository.findAll();
+    public List<FormDto> getForms(FormStatus formStatus) {
+        List<Form> forms;
+
+        if (formStatus != null) {
+            forms = formRepository.findByFormStatus(formStatus);
+        } else {
+            forms = formRepository.findAll();
+        }
         List<FormDto> formDtos = new ArrayList<>();
 
         for (Form form : forms) {
@@ -59,6 +65,20 @@ public class FormService {
                 form.getApprover() != null ? form.getApprover().getId() : null, form.getName(), form.getApproverName(),
                 form.getPhone(), form.getStartDate(), form.getEndDate(), form.getFormStatus(), form.getFormType(),
                 form.getReason(), form.getComment());
+    }
+
+    public List<FormDto> getFormsByEmployee(Long id) {
+        List<Form> forms = formRepository.findByEmployeeId(id);
+        List<FormDto> formDtos = new ArrayList<>();
+
+        for (Form form : forms) {
+            formDtos.add(new FormDto(form.getId(), form.getEmployee().getId(),
+                    form.getApprover() != null ? form.getApprover().getId() : null, form.getName(),
+                    form.getApproverName(), form.getPhone(), form.getStartDate(), form.getEndDate(),
+                    form.getFormStatus(), form.getFormType(), form.getReason(), form.getComment()));
+        }
+
+        return formDtos;
     }
 
     public String addForm(AddFormDto addFormDto) {

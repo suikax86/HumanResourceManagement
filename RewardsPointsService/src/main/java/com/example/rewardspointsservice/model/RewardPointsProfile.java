@@ -15,11 +15,12 @@ public class RewardPointsProfile {
     @Id
     private String id;
     private Long employeeId;
+    private String employeeName;
     private Double totalPoints;
     private List<RewardPointsTransaction> pointsHistory = new ArrayList<>();
 
     public RewardPointsProfile() {
-        this.totalPoints = (double) 0;
+        this.totalPoints = (double) 100;
     }
 
     public void addPoints(Long seederId,Double points, String description) {

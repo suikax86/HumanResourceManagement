@@ -45,7 +45,7 @@ const EditProfileForm = () => {
     const employeeId = userInfo?.employeeId;
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/employees/${employeeId}`,
+        `http://localhost:8080/api/employees/${employeeId}?withPoints=false`,
         employee
       );
       if (response.status === 200) {
@@ -95,7 +95,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Phone Number:</label>
+          <label>Số điện thoại:</label>
           <input
             type="text"
             name="phoneNumber"
@@ -105,7 +105,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Address:</label>
+          <label>Địa chỉ:</label>
           <input
             type="text"
             name="address"
@@ -114,7 +114,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Bank Name:</label>
+          <label>Tên ngân hàng:</label>
           <input
             type="text"
             name="bankName"
@@ -123,7 +123,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Bank Number:</label>
+          <label>Số ngân hàng:</label>
           <input
             type="text"
             name="bankNumber"
@@ -131,17 +131,6 @@ const EditProfileForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Reward Points:</label>
-          <input
-            type="text"
-            name="rewardPoints"
-            value={employee.rewardPoints}
-            onChange={handleChange}
-            disabled
-          />
-        </div>
-
         <button type="submit">Update Profile</button>
       </form>
       <ToastContainer position="bottom-right" />
