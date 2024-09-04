@@ -48,7 +48,7 @@ function CheckInCheckOut() {
       .catch(err => {
         console.log('History fetch error:', err);
       });
-  }, [employeeId]); // Add employeeId as a dependency to avoid endless loop
+  }); 
 
   return (
     <div className='checkincheckout-container'>
