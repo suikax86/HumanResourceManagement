@@ -42,6 +42,11 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue employeeTransferPointsQueue() {
+        return new Queue("employeeTransferPointsQueue");
+    }
+
+    @Bean
     public Binding bindingEmployeeCreatedQueue(@Qualifier("employeeCreatedQueue") Queue employeeCreatedQueue, TopicExchange employeeExchange) {
         return BindingBuilder.bind(employeeCreatedQueue).to(employeeExchange).with("employee.created");
     }
@@ -54,6 +59,11 @@ public class RabbitMQConfig {
     @Bean
     public Binding bindingEmployeeRewardRequestQueue(@Qualifier("employeeRewardRequestQueue") Queue employeeRewardRequestQueue, TopicExchange employeeExchange) {
         return BindingBuilder.bind(employeeRewardRequestQueue).to(employeeExchange).with("employee.reward.request");
+    }
+
+    @Bean
+    public Binding bindingEmployeeTransferPointsQueue(@Qualifier("employeeTransferPointsQueue") Queue employeeTransferPointsQueue, TopicExchange employeeExchange) {
+        return BindingBuilder.bind(employeeTransferPointsQueue).to(employeeExchange).with("employee.points.transfer");
     }
 
     @Bean

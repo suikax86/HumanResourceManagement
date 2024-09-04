@@ -28,8 +28,8 @@ public class RewardPointsProfileController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createRewardPointsProfile(@RequestBody Long employeeId) {
-        String response = rewardPointsService.createRewardPointsProfile(employeeId);
+    public ResponseEntity<String> createRewardPointsProfile(@RequestBody Long employeeId, String employeeName) {
+        String response = rewardPointsService.createRewardPointsProfile(employeeId, employeeName);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }

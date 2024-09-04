@@ -1,5 +1,6 @@
 package da.hms.employeeservice.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import da.hms.employeeservice.model.dto.AccountDto;
 import da.hms.employeeservice.model.dto.LoginDto;
 import da.hms.employeeservice.model.dto.RegisterDto;
@@ -25,7 +26,7 @@ public class AuthController {
 
     @PostMapping("/register")
     @Transactional
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) throws JsonProcessingException {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
