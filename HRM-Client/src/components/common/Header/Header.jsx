@@ -112,7 +112,7 @@ const requestMa  = [
   {
     key: '5',
     label: (
-      <NavLink to="/" className={'header_dropdown'}> 
+      <NavLink to="/ApprovalHistory" className={'header_dropdown'}> 
         Lịch sử duyệt yêu cầu
         </NavLink>
     ),

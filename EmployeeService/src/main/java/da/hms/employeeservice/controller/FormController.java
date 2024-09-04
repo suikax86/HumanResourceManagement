@@ -3,6 +3,7 @@ package da.hms.employeeservice.controller;
 import da.hms.employeeservice.model.dto.AddFormDto;
 import da.hms.employeeservice.model.dto.ApproveFormDto;
 import da.hms.employeeservice.model.dto.FormDto;
+import da.hms.employeeservice.model.enums.FormStatus;
 import da.hms.employeeservice.service.FormService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -24,13 +25,18 @@ public class FormController {
     }
 
     @GetMapping("")
-    public List<FormDto> getForms() {
-        return formService.getForms();
+    public List<FormDto> getForms(@RequestParam(required = false) FormStatus formStatus) {
+        return formService.getForms(formStatus);
     }
 
     @GetMapping("/{id}")
     public FormDto getForm(@PathVariable Long id) {
         return formService.getForm(id);
+    }
+
+    @GetMapping("/employee/{id}")
+    public List<FormDto> getFormsByEmployee(@PathVariable Long id) {
+        return formService.getFormsByEmployee(id);
     }
 
     @PostMapping("")

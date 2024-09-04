@@ -1,0 +1,61 @@
+.approval-history-container {
+  padding: 20px;
+}
+
+.forms-section {
+  margin-bottom: 40px;
+}
+
+.forms-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+
+  .page-item {
+    margin: 0 5px;
+
+    .page-link {
+      padding: 8px 16px;
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+
+    &.active .page-link {
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+    }
+  }
+}

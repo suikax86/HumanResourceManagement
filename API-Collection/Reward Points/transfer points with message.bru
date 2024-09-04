@@ -1,0 +1,21 @@
+meta {
+  name: transfer points with message
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8080/api/employees/transfer
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "fromId":553,
+    "toId":552,
+    "amount": 5,
+    "message": "Thưởng quý"
+  }
+  
+}

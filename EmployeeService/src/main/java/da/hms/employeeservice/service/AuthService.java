@@ -1,11 +1,11 @@
 package da.hms.employeeservice.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import da.hms.employeeservice.model.Account;
 import da.hms.employeeservice.model.Employee;
 import da.hms.employeeservice.model.Role;
-import da.hms.employeeservice.model.dto.AccountDto;
-import da.hms.employeeservice.model.dto.LoginDto;
-import da.hms.employeeservice.model.dto.RegisterDto;
+import da.hms.employeeservice.model.dto.*;
 import da.hms.employeeservice.model.enums.AccountStatus;
 import da.hms.employeeservice.repository.AccountRepository;
 import da.hms.employeeservice.repository.EmployeeRepository;
@@ -43,7 +43,7 @@ public class AuthService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public String register(RegisterDto registerDto) {
+    public String register(RegisterDto registerDto) throws JsonProcessingException {
 
         // Check if the email is already in use
         if (accountRepository.existsByUsername(registerDto.getEmail())) {
@@ -82,7 +82,8 @@ public class AuthService {
 
         // Publish message to RabbitMQ exchange
         log.info("Sending employeeId to RabbitMQ: {}", savedEmployee.getId());
-        rabbitTemplate.convertAndSend("employeeExchange", "employee.created", savedEmployee.getId());
+        String message = new ObjectMapper().writeValueAsString(new CreateRewardPointsRequest(savedEmployee.getId(), savedEmployee.getName()));
+        rabbitTemplate.convertAndSend("employeeExchange", "employee.created", message);
         return "Registration successful";
     }
 
