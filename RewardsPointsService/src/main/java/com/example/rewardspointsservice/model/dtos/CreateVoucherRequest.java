@@ -9,8 +9,7 @@ import java.time.LocalDate;
 @Data
 @Getter
 @Setter
-public class VoucherDTO {
-    private Long id;
+public class CreateVoucherRequest {
     private String brand;
     private String name;
     private String description;
@@ -19,11 +18,10 @@ public class VoucherDTO {
     private LocalDate DateStart;
     private LocalDate DateEnd;
 
-    public VoucherDTO() {
+    public CreateVoucherRequest() {
     }
 
-    public VoucherDTO(Long id, String brand, String name, String description, Double points, int quantity, LocalDate dateStart, LocalDate dateEnd) {
-        this.id = id;
+    public CreateVoucherRequest(String brand, String name, String description, Double points, int quantity, LocalDate dateStart, LocalDate dateEnd) {
         this.brand = brand;
         this.name = name;
         this.description = description;
