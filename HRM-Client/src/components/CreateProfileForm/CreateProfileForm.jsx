@@ -60,7 +60,7 @@ const CreateProfileForm = () => {
           />
         </div>
         <div>
-          <label>Password:</label>
+          <label>Mật khẩu:</label>
           <input
             type="password"
             name="password"
@@ -100,7 +100,7 @@ const CreateProfileForm = () => {
           />
         </div>
         <div>
-          <label>Address:</label>
+          <label>Địa chỉ:</label>
           <input
             type="text"
             name="address"
@@ -110,7 +110,7 @@ const CreateProfileForm = () => {
           />
         </div>
         <div>
-          <label>Phone Number:</label>
+          <label>Số điện thoại:</label>
           <input
             type="text"
             name="phoneNumber"
@@ -120,7 +120,7 @@ const CreateProfileForm = () => {
           />
         </div>
         <div>
-          <label>Bank Name:</label>
+          <label>Tên ngân hàng:</label>
           <input
             type="text"
             name="bankName"
@@ -130,7 +130,7 @@ const CreateProfileForm = () => {
           />
         </div>
         <div>
-          <label>Bank Number:</label>
+          <label>Số ngân hàng:</label>
           <input
             type="text"
             name="bankNumber"

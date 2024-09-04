@@ -24,7 +24,7 @@ function HistoryApplication() {
 
     // Fetch forms from the API
     const fetchForms = () => {
-        fetch('http://localhost:8080/api/forms')
+        fetch(`http://localhost:8080/api/forms/employee/${user.employeeId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -68,30 +68,6 @@ function HistoryApplication() {
             })
             .catch(err => {
                 setError('Error deleting form.');
-                setResponseMessage('');
-            });
-    };
-
-    const KhongDuyetDon = () => {
-        axios.put(`http://localhost:8080/api/forms/${formData.id}`, {
-            id: formData.id,
-            employeeId: formData.employeeId,
-            name: formData.name,
-            phone: formData.phone,
-            dayRest: formData.dayRest,
-            dateBackToWork: formData.dateBackToWork,
-            type: formData.type,
-            formCondition: "Denied",
-            reason: formData.reason
-        })
-            .then(response => {
-                setResponseMessage('Form updated successfully!');
-                setError('');
-                // Refresh the forms list
-                fetchForms();
-            })
-            .catch(err => {
-                setError('Error updating form.');
                 setResponseMessage('');
             });
     };
@@ -147,7 +123,6 @@ function HistoryApplication() {
 
             <div className="button-container">
                 <button onClick={XoaDon} className='KoDuyet'>Xóa đơn</button>
-              
             </div>
         </>
     );
