@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './DonXinNghi.scss';
+import { NavLink } from "react-router-dom";
+
 function DonXinNghi() {
-
-
   const EmployeeInfo = localStorage.getItem('userInfo');
   const user = JSON.parse(EmployeeInfo);
 
@@ -20,7 +20,6 @@ function DonXinNghi() {
 
   const handleTypeChange = (event) => {
     setSelectedOption(event.target.value);
-    console.log('Selected option:', event.target.value);
   };
 
   const [responseMessage, setResponseMessage] = useState('');
@@ -47,7 +46,6 @@ function DonXinNghi() {
       .then(response => {
         setResponseMessage('Form submitted successfully!');
         setError('');
-        // Optionally reset the form
         setFormData({
           employeeId: '',
           startDate: '',
@@ -62,92 +60,87 @@ function DonXinNghi() {
       });
   };
 
-  return (
-    <div>
-      <h1>Submit a Form</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Employee ID:
-          <input
-            type="number"
-            name="employeeId"
-            value={user.employeeId}
-            disabled
-          />
-        </label>
-        <br />
+  const cancelSubmit = () => {
 
-        <br />
-        <label>
-          Start Date:
+  }
+
+  return (
+    <div className='request-container'>
+      <di className='request-title'>Submit a Form</di>
+      <form onSubmit={handleSubmit} className='request-form'>
+        <div className='form-detail'>
+          <label>
+            Employee ID :
+          </label>
+          <input
+              type="number"
+              name="employeeId"
+              value={user.employeeId}
+              disabled
+              className='employeeid-input'
+            />
+        </div>
+        <div className='form-detail'>
+          <label>
+            Start Date :
+          </label>
           <input
             type="date"
             name="startDate"
             value={formData.startDate}
             onChange={handleChange}
             required
+            className='form-input'
           min={today} // Sets the min allowable date to today
           max={formData.startDate} // Sets the max allowable date to Date Back to Work
           />
-        </label>
-        <br />
-        <label>
-          End Date:
+        </div>
+
+        <div className='form-detail'>
+          <label>
+            End Date :
+          </label>
           <input
             type="date"
             name="endDate"
             value={formData.endDate}
             onChange={handleChange}
+            className='form-input'
             required
           />
-        </label>
+        </div>
 
         {!isDayRestValid && (
         <p style={{ color: 'red' }}>Day Rest cannot be later than Date Back to Work.</p>
       )}
-        <br />
-        <label>
         <select
-    name="formType"
-    value={formData.formType}
-    onChange={handleChange}
-    required
-  >
-    <option value="" disabled>Type of rest</option>
-    <option value="WFH">WFH</option>
-    <option value="LEAVE">Nghỉ phép</option>
-  </select>
-        </label>
-        
-
-        
-       
-
-
-{/* 
-<div>
-      <h1>Choose an Option</h1>
-      <select value={formData.type} onChange={handleChange}>
-        <option value="" disabled>Select Yes or No</option>
-        <option value="WFH">WFH</option>
-        <option value="Nghi phep">Nghi Phep</option>
-      </select>
-      {formData.type && <p>You selected: {formData.type}</p>}
-    </div> */}
-
-        <br />
-        <label>
-          Reason:
-          <input
+          name="formType"
+          value={formData.formType}
+          onChange={handleChange}
+          className='form-select'
+          required
+        >
+          <option value="" disabled>Type of rest</option>
+          <option value="WFH">WFH</option>
+          <option value="LEAVE">Nghỉ phép</option>
+        </select>
+        <div className='form-detail'>
+          <label>
+            Reason:
+          </label>
+          <textarea
             type="text"
             name="reason"
             value={formData.reason}
             onChange={handleChange}
+             className='form-input'
             required
           />
-        </label>
-        <br />
-        <button type="submit"  disabled={!isDayRestValid}>Submit</button>
+        </div>
+        <div className='form-button'>
+          <button type="submit"  disabled={!isDayRestValid} className='button-submit'>Submit</button>
+          <NavLink to={'/homepage'} className='button-cancel'>Cancel</NavLink>
+        </div>
       </form>
       {responseMessage && <p>{responseMessage}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}

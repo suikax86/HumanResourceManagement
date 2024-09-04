@@ -1,149 +1,66 @@
-/* General body styling for better aesthetics */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
+.request-container{
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  .request-title{
+    font-size: 30px;
+    font-weight: bold;
   }
-  
-  /* Form container styling */
-  .form-container {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
+  .request-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    -webkit-box-shadow: 10px 10px 37px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 37px -13px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 37px -13px rgba(0,0,0,0.75);
+    padding: 50px;
+    .form-detail{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      .employeeid-input{
+        border: none;
+      }
+      .form-input{
+        padding: 5px;
+        &:focus{
+          outline: none!important;
+        }
+      }
+    }
+    .form-select{
+       padding: 5px;
+       width: 50%;
+       &:focus{
+        outline: none!important;
+      }
+    }
+    .form-button{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding-top: 20px;
+      .button-submit{
+        background-color:  rgb(76, 124, 255);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+      }
+      .button-cancel{
+        background-color:  rgb(255, 76, 76);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
-  
-  /* Form title styling */
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Flexbox layout for form */
-  form {
-    display: grid;
-    gap: 15px;
-  }
-  
-  /* Label styling */
-  label {
-    font-weight: 600;
-    color: #333;
-  }
-  
-  /* Input and select styling */
-  input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  /* Button styling */
-  button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  /* Success and error message styling */
-  .response-message {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .success {
-    background-color: #d4edda;
-    color: #155724;
-  }
-  
-  .error {
-    background-color: #f8d7da;
-    color: #721c24;
-  }
-
-  .checkbox-dropdown {
-    width: 200px;
-    border: 1px solid #aaa;
-    padding: 10px;
-    position: relative;
-    margin: 0 auto;
-    
-    user-select: none;
 }
-
-/* Display CSS arrow to the right of the dropdown text */
-.checkbox-dropdown:after {
-    content:'';
-    height: 0;
-    position: absolute;
-    width: 0;
-    border: 6px solid transparent;
-    border-top-color: #000;
-    top: 50%;
-    right: 10px;
-    margin-top: -3px;
-}
-
-/* Reverse the CSS arrow when the dropdown is active */
-.checkbox-dropdown.is-active:after {
-    border-bottom-color: #000;
-    border-top-color: #fff;
-    margin-top: -9px;
-}
-
-.checkbox-dropdown-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 100%; /* align the dropdown right below the dropdown text */
-    border: inherit;
-    border-top: none;
-    left: -1px; /* align the dropdown to the left */
-    right: -1px; /* align the dropdown to the right */
-    opacity: 0; /* hide the dropdown */
-   
-    transition: opacity 0.4s ease-in-out;
-    height: 100px;
-    overflow: scroll;
-    overflow-x: hidden;
-    pointer-events: none; /* avoid mouse click events inside the dropdown */
-}
-.is-active .checkbox-dropdown-list {
-    opacity: 1; /* display the dropdown */
-    pointer-events: auto; /* make sure that the user still can select checkboxes */
-}
-
-.checkbox-dropdown-list li label {
-    display: block;
-    border-bottom: 1px solid silver;
-    padding: 10px;
-   
-    transition: all 0.2s ease-out;
-}
-
-.checkbox-dropdown-list li label:hover {
-    background-color: #555;
-    color: white;
-}
-
-  
