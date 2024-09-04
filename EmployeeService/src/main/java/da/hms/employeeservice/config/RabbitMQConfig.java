@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+
     @Bean
     public TopicExchange employeeExchange() {
         return new TopicExchange("employeeExchange");
@@ -27,6 +28,11 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public Queue employeeRewardRequestQueue() {
+        return new Queue("employeeRewardRequestQueue");
+    }
+
+    @Bean
     public Binding bindingEmployeeCreatedQueue(@Qualifier("employeeCreatedQueue") Queue employeeCreatedQueue, TopicExchange employeeExchange) {
         return BindingBuilder.bind(employeeCreatedQueue).to(employeeExchange).with("employee.created");
     }
@@ -34,6 +40,11 @@ public class RabbitMQConfig {
     @Bean
     public Binding bindingEmployeeDeletedQueue(@Qualifier("employeeDeletedQueue") Queue employeeDeletedQueue, TopicExchange employeeExchange) {
         return BindingBuilder.bind(employeeDeletedQueue).to(employeeExchange).with("employee.deleted");
+    }
+
+    @Bean
+    public Binding bindingEmployeeRewardRequestQueue(@Qualifier("employeeRewardRequestQueue") Queue employeeRewardRequestQueue, TopicExchange employeeExchange) {
+        return BindingBuilder.bind(employeeRewardRequestQueue).to(employeeExchange).with("employee.reward.request");
     }
 
     @Bean
