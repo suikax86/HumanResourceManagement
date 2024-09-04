@@ -23,6 +23,9 @@ function Header() {
         <NavLink to="/DuyetDon">
           Duyệt đơn xin nghỉ
         </NavLink>
+        <NavLink to="/ShowTimeSheet">
+          Xem giờ làm
+        </NavLink>
         
       </div>
       <NavLink to="/login">
