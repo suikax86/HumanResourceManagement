@@ -15,6 +15,7 @@ public class RewardPointsProfile {
     @Id
     private String id;
     private Long employeeId;
+    private String employeeName;
     private Double totalPoints;
     private List<RewardPointsTransaction> pointsHistory = new ArrayList<>();
 

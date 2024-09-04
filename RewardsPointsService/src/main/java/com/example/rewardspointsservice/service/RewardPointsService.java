@@ -44,13 +44,14 @@ public class RewardPointsService {
         return profileDtos;
     }
 
-    public String createRewardPointsProfile(Long employeeId) {
+    public String createRewardPointsProfile(Long employeeId, String employeeName) {
             // check if the employee already has a reward points profile
             if (rewardPointsRepository.findByEmployeeId(employeeId).isPresent()) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Profile already exists for employee ID: " + employeeId);
             }
             RewardPointsProfile profile = new RewardPointsProfile();
             profile.setEmployeeId(employeeId);
+            profile.setEmployeeName(employeeName);
             rewardPointsRepository.save(profile);
             return "Profile created successfully for employee ID: " + employeeId;
     }
@@ -63,6 +64,33 @@ public class RewardPointsService {
 
     public void deleteRewardPointsProfile(Long employeeId) {
         rewardPointsRepository.deleteByEmployeeId(employeeId);
+    }
+
+
+    public String transferPoints(Long fromEmployeeId, Long toEmployeeId, double amount, String msg) {
+        RewardPointsProfile fromProfile = rewardPointsRepository.findByEmployeeId(fromEmployeeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+        RewardPointsProfile toProfile = rewardPointsRepository.findByEmployeeId(toEmployeeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+
+        if (fromProfile.getTotalPoints() < amount) {
+            return "Insufficient points";
+        }
+
+        fromProfile.subtractPoints(fromEmployeeId, amount, "Transfer to employee: " + toProfile.getEmployeeName());
+
+        String message = "Transfer from employee: " + fromProfile.getEmployeeName();
+
+        if(msg != null && !msg.isEmpty()) {
+            message = message + " with message: " + msg;
+        }
+
+        toProfile.addPoints(toEmployeeId, amount, message);
+
+        rewardPointsRepository.save(fromProfile);
+        rewardPointsRepository.save(toProfile);
+
+        return "Points transferred successfully";
     }
 
 
