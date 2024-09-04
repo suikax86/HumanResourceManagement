@@ -1,0 +1,21 @@
+meta {
+  name: Post UpDateTimeSheet
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8081/api/timesheet/update
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "employeeId": 2,
+      "name": "John Doe",
+      "date": "2024-09-03",
+      "timeBegin": "09:00:00",
+      "timeEnd": "17:00:00"
+  }
+}
