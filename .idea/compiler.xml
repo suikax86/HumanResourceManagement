@@ -11,6 +11,7 @@
         <module name="API-Gateway" />
         <module name="EmailService" />
         <module name="RewardsPointsService" />
+        <module name="StravaService" />
         <module name="EmployeeService" />
       </profile>
     </annotationProcessing>
@@ -26,6 +27,7 @@
       <module name="EmployeeService" options="-parameters" />
       <module name="EurekaServer" options="-parameters" />
       <module name="RewardsPointsService" options="-parameters" />
+      <module name="StravaService" options="-parameters" />
       <module name="VoucherService" options="-parameters" />
     </option>
   </component>
