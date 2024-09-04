@@ -4,6 +4,8 @@ import da.hms.employeeservice.model.dto.EmployeeDto;
 import da.hms.employeeservice.model.dto.UpdateEmployeeDto;
 import da.hms.employeeservice.service.EmployeeService;
 import jakarta.validation.Valid;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.MessageProperties;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,27 +25,37 @@ public class EmployeeController {
     }
 
     @GetMapping("")
-    public List<EmployeeDto> getEmployees() {
+    public List<EmployeeDto> getEmployees(@RequestParam(defaultValue = "true") boolean withPoints) {
         List<EmployeeDto> employeeDtos = employeeService.getEmployeesDto();
 
-        for (EmployeeDto employeeDto : employeeDtos) {
-            Double points = (Double) rabbitTemplate.convertSendAndReceive("employeeExchange", "employee.reward.request", employeeDto.getId());
-            points = points != null ? points : -1;
-            employeeDto.setRewardPoints(points);
+        if(withPoints) {
+            for (EmployeeDto employeeDto : employeeDtos) {
+                MessageProperties messageProperties = new MessageProperties();
+                messageProperties.setContentType(MessageProperties.CONTENT_TYPE_JSON);
+                Message message = new Message(employeeDto.getId().toString().getBytes(), messageProperties);
+                Double points = (Double) rabbitTemplate.convertSendAndReceive("employeeExchange", "employee.reward.request", message);
+                points = points != null ? points : -1;
+                employeeDto.setRewardPoints(points);
+            }
         }
 
         return employeeDtos;
     }
 
     @GetMapping("/{id}")
-    public EmployeeDto getEmployee(@PathVariable Long id) {
+    public EmployeeDto getEmployee(@PathVariable Long id,@RequestParam(defaultValue = "true") boolean withPoints) {
 
         EmployeeDto employeeDto = employeeService.getEmployeeDto(id);
 
-        Double points = (Double) rabbitTemplate.convertSendAndReceive("employeeExchange", "employee.reward.request", id);
-        points = points != null ? points : -1;
+        if(withPoints) {
+            MessageProperties messageProperties = new MessageProperties();
+            messageProperties.setContentType(MessageProperties.CONTENT_TYPE_JSON);
+            Message message = new Message(employeeDto.getId().toString().getBytes(), messageProperties);
+            Double points = (Double) rabbitTemplate.convertSendAndReceive("employeeExchange", "employee.reward.request", message);
+            points = points != null ? points : -1;
+            employeeDto.setRewardPoints(points);
+        }
 
-        employeeDto.setRewardPoints(points);
         return employeeDto;
     }
 

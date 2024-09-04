@@ -1,0 +1,15 @@
+meta {
+  name: Get Employees With Out Points
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/api/employees?withPoints=false
+  body: none
+  auth: none
+}
+
+params:query {
+  withPoints: false
+}

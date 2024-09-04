@@ -45,7 +45,7 @@ const EditProfileForm = () => {
     const employeeId = userInfo?.employeeId;
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/employees/${employeeId}`,
+        `http://localhost:8080/api/employees/${employeeId}?withPoints=false`,
         employee
       );
       if (response.status === 200) {
@@ -131,17 +131,6 @@ const EditProfileForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Reward Points:</label>
-          <input
-            type="text"
-            name="rewardPoints"
-            value={employee.rewardPoints}
-            onChange={handleChange}
-            disabled
-          />
-        </div>
-
         <button type="submit">Update Profile</button>
       </form>
       <ToastContainer position="bottom-right" />
