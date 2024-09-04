@@ -11,6 +11,7 @@ import DuyetDon from "./pages/DuyetDon/DuyetDon.jsx";
 import VoucherPage from "./pages/VoucherPage/VoucherPage.jsx";
 import HistoryApplication from "./pages/HistoryApplication/History.jsx";
 import ApprovalHistoryPage from "./pages/ApprovalHistoryPage/ApprovalHistoryPage.jsx";
+import CheckInCheckOutPage from "./pages/CheckInCheckOut/CheckInCheckOutPage.jsx";
 import Page404 from "./pages/404/404.jsx";
 import Page403 from "./pages/403/403.jsx";
 import CheckInCheckOutPage from "./pages/CheckInCheckOutPage/CheckInCheckOut.jsx";
