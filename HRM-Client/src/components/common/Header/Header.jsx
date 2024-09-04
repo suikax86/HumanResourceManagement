@@ -17,6 +17,9 @@ function Header() {
         <NavLink to="/HistoryApplication">
           Lịch sử đơn xin 
         </NavLink>
+        <NavLink to="/TimeSheet">
+          Cập nhật giờ làm 
+        </NavLink>
         <NavLink to="/DuyetDon">
           Duyệt đơn xin nghỉ
         </NavLink>
