@@ -43,7 +43,7 @@ public class FormController {
     }
 
     @GetMapping("/{id}")
-    public FormDto getForm(@PathVariable Long id) {
+        public FormDto getForm(@PathVariable Long id) {
         Form form = formRepository.findById(id).orElse(null);
         if (form == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Form not found");

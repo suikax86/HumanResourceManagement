@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
-function UpdateTimeSheetForm() {
+function UpdateTimeSheet() {
     const EmployeeInfo = localStorage.getItem('userInfo');
     const user = JSON.parse(EmployeeInfo);
-    const [name, setName] = useState('');
     const [error, setError] = useState(null);
 
+
+    const getTodayDate = () => {
+        const today = new Date();
+        return today.toISOString().split('T')[0]; // Format YYYY-MM-DD
+    };
+
+    const getCurrentTime = () => {
+        const now = new Date();
+        return now.toTimeString().split(' ')[0].substring(0, 5); // Format HH:MM
+    };
+
+    const [formData, setFormData] = useState({
+        employeeId: user.employeeId,
+        name: "",
+        date: getTodayDate(),
+        timeBegin: '',
+        timeEnd: ''
+    });
+
     useEffect(() => {
-        fetch('http://localhost:8080/api/employees/1')
+        fetch('http://localhost:8080/api/employees/' + user.employeeId)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -15,33 +33,60 @@ function UpdateTimeSheetForm() {
                 return response.json();
             })
             .then(data => {
-                setName(data.name);
+                setFormData(prevFormData => ({
+                    ...prevFormData,
+                    name: data.name
+                }));
             })
             .catch(error => {
                 setError(error);
                 console.error('There was a problem with the fetch operation:', error);
             });
-    }, []);
-
-    const [formData, setFormData] = useState({
-        employeeId: user.employeeId,
-        name: name,
-        date: '',
-        timeBegin: '',
-        timeEnd: ''
-    });
+    }, [user.employeeId]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
+        setFormData(prevFormData => {
+            const updatedData = { ...prevFormData, [name]: value };
+            // Validate timeBegin and timeEnd here
+            if (name === 'timeBegin' || name === 'timeEnd') {
+                validateTimes(updatedData);
+            }
+            return updatedData;
         });
+    };
+
+    const validateTimes = (data) => {
+        if (data.timeBegin && data.timeEnd) {
+            if (data.timeBegin > data.timeEnd) {
+                alert('Time Begin cannot be greater than Time End.');
+                setFormData(prevFormData => ({
+                    ...prevFormData,
+                    timeBegin: '' // Clear timeBegin if invalid
+                }));
+            } else if (data.timeBegin < getCurrentTime()) {
+                alert('Time Begin cannot be earlier than the current time.');
+                setFormData(prevFormData => ({
+                    ...prevFormData,
+                    timeBegin: '' // Clear timeBegin if invalid
+                }));
+            }
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("formData: ", formData);
+
+        // Validate that timeBegin is not smaller than the current time and not greater than timeEnd
+        if (formData.timeBegin < getCurrentTime()) {
+            alert('Time Begin cannot be earlier than the current time.');
+            return;
+        }
+
+        if (formData.timeBegin > formData.timeEnd) {
+            alert('Time Begin cannot be greater than Time End.');
+            return;
+        }
 
         fetch('http://localhost:8081/api/timesheet/update', {
             method: 'POST',
@@ -61,10 +106,7 @@ function UpdateTimeSheetForm() {
         });
     };
 
-    const getTodayDate = () => {
-        const today = new Date();
-        return today.toISOString().split('T')[0]; // Format YYYY-MM-DD
-    };
+   
 
     return (
         <form onSubmit={handleSubmit}>
@@ -76,6 +118,7 @@ function UpdateTimeSheetForm() {
                     value={formData.employeeId}
                     onChange={handleChange}
                     required
+                    readOnly
                 />
             </div>
             <div>
@@ -83,7 +126,7 @@ function UpdateTimeSheetForm() {
                 <input
                     type="text"
                     name="name"
-                    value={name}
+                    value={formData.name}
                     onChange={handleChange}
                     required
                 />
@@ -124,4 +167,15 @@ function UpdateTimeSheetForm() {
     );
 }
 
-export default UpdateTimeSheetForm;
+export default UpdateTimeSheet;
+
+
+
+
+
+
+// setName(data.name);
+// setFormData(prevFormData => ({
+//     ...prevFormData,
+//     name: data.name
+// }));

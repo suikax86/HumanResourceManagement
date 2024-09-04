@@ -8,6 +8,7 @@ import DonXinNghi from './pages/DonXinNghi/Don.jsx';
 import DuyetDon from './pages/DuyetDon/DuyetDon.jsx';
 import HistoryApplication from './pages/HistoryApplication/History.jsx';
 import UpdateTime from './pages/UpdateTime/UpdateTime.jsx';
+import ShowSheet from './pages/ShowSheet/ShowSheet.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route exac path="/HistoryApplication" element={<HistoryApplication />} />
         <Route exac path="/DuyetDon" element={<DuyetDon />} />
         <Route exac path="/TimeSheet" element={<UpdateTime />} />
+        <Route exac path="/ShowTimeSheet" element={<ShowSheet />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
