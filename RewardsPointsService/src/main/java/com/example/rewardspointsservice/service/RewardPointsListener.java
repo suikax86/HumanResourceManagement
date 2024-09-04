@@ -16,6 +16,7 @@ public class RewardPointsListener {
     @RabbitListener( queues = "employeeCreatedQueue")
     public void handleEmployeeCreated(Long employeeId) {
         log.info("Employee created event received: {}", employeeId);
+
         rewardPointsService.createRewardPointsProfile(employeeId);
     }
 
@@ -23,6 +24,14 @@ public class RewardPointsListener {
     public void handleEmployeeDeleted(Long employeeId) {
         log.info("Employee deleted event received: {}", employeeId);
         rewardPointsService.deleteRewardPointsProfile(employeeId);
+    }
+
+    @RabbitListener(queues = "employeeRewardRequestQueue")
+    public double handleEmployeeRewardRequest(Long employeeId) {
+        log.info("Employee reward request received: {}", employeeId);
+        double points = rewardPointsService.getRewardPoints(employeeId);
+        log.info("Reward points for employee {}: {}", employeeId, points);
+        return points;
     }
 
 

@@ -45,10 +45,20 @@ public class RewardPointsService {
     }
 
     public String createRewardPointsProfile(Long employeeId) {
+            // check if the employee already has a reward points profile
+            if (rewardPointsRepository.findByEmployeeId(employeeId).isPresent()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Profile already exists for employee ID: " + employeeId);
+            }
             RewardPointsProfile profile = new RewardPointsProfile();
             profile.setEmployeeId(employeeId);
             rewardPointsRepository.save(profile);
             return "Profile created successfully for employee ID: " + employeeId;
+    }
+
+    public double getRewardPoints(Long employeeId) {
+        RewardPointsProfile profile = rewardPointsRepository.findByEmployeeId(employeeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+        return profile.getTotalPoints();
     }
 
     public void deleteRewardPointsProfile(Long employeeId) {
