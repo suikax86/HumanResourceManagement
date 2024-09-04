@@ -1,0 +1,23 @@
+meta {
+  name: Create Voucher
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/api/vouchers/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "brand": "Phúc Long",
+    "name": "Phiếu giảm giá 10%",
+    "description": "Giảm giá 10% cho tất cả sản phẩm.",
+    "points": 90,
+    "quantity": 5,
+    "dateStart": "2024-09-01",
+    "dateEnd": "2024-09-30"
+  }
+}
