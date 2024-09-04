@@ -95,7 +95,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Phone Number:</label>
+          <label>Số điện thoại:</label>
           <input
             type="text"
             name="phoneNumber"
@@ -105,7 +105,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Address:</label>
+          <label>Địa chỉ:</label>
           <input
             type="text"
             name="address"
@@ -114,7 +114,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Bank Name:</label>
+          <label>Tên ngân hàng:</label>
           <input
             type="text"
             name="bankName"
@@ -123,7 +123,7 @@ const EditProfileForm = () => {
           />
         </div>
         <div>
-          <label>Bank Number:</label>
+          <label>Số ngân hàng:</label>
           <input
             type="text"
             name="bankNumber"
