@@ -70,7 +70,7 @@ const requestEm  = [
   {
     key: '3',
     label: (
-      <NavLink to="/" className={'header_dropdown'}>
+      <NavLink to="/CheckIn-CheckOut" className={'header_dropdown'}>
           Check in - Check out
         </NavLink>
     ),
@@ -96,7 +96,7 @@ const requestMa  = [
   {
     key: '3',
     label: (
-      <NavLink to="/" className={'header_dropdown'}>
+      <NavLink to="/CheckIn-CheckOut" className={'header_dropdown'}>
           Check in - Check out
         </NavLink>
     ),

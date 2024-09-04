@@ -13,6 +13,7 @@ import HistoryApplication from "./pages/HistoryApplication/History.jsx";
 import ApprovalHistoryPage from "./pages/ApprovalHistoryPage/ApprovalHistoryPage.jsx";
 import Page404 from "./pages/404/404.jsx";
 import Page403 from "./pages/403/403.jsx";
+import CheckInCheckOutPage from "./pages/CheckInCheckOutPage/CheckInCheckOut.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route exac path="/History" element={<HistoryApplication />}/>
         <Route exac path="/DuyetDon" element={<DuyetDon />} />
         <Route exac path ="/ApprovalHistory" element={<ApprovalHistoryPage />} />
+        <Route exac path="/CheckIn-CheckOut" element={<CheckInCheckOutPage />} />
         <Route exac path="/404" element={<Page404 />} />
         <Route exac path="/403" element={<Page403 />} />
 
