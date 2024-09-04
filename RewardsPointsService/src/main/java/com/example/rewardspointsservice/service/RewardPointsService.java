@@ -19,6 +19,15 @@ public class RewardPointsService {
         this.rewardPointsRepository = rewardPointsRepository;
     }
 
+    public RewardPointsProfile getProfile(Long employeeId) {
+        return rewardPointsRepository.findByEmployeeId(employeeId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+    }
+
+    public void saveProfile(RewardPointsProfile profile) {
+        rewardPointsRepository.save(profile);
+    }
+
     public RewardPointsProfileDto getProfileDto(Long employeeId) {
         RewardPointsProfile profile = rewardPointsRepository.findByEmployeeId(employeeId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
