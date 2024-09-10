@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './UpdateTimeSheet.scss';
 function UpdateTimeSheet() {
     const EmployeeInfo = localStorage.getItem('userInfo');
     const user = JSON.parse(EmployeeInfo);
