@@ -19,7 +19,7 @@ function TransferPoint() {
     })
     .catch((err) => console.log(err))
 
-    axios.get(`http://localhost:8080/api/reward-points-profile/${id}`)
+    axios.get(`http://localhost:8080/api/rewards/${id}`)
     .then((res) => {
       setMyPoint(res.data)
     })

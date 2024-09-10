@@ -16,7 +16,7 @@ const Callback = () => {
           const tokenData = await exchangeToken(code);
           console.log('Token data:', tokenData); // Debug log
           localStorage.setItem('access_token', tokenData.access_token);
-          navigate('/activities');
+          navigate('/strava');
         } catch (error) {
           console.error('Error during token exchange:', error); // Debug log
         }
