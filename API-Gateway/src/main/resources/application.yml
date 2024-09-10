@@ -24,17 +24,21 @@ spring:
           predicates:
             - Path=/api/timesheets/**
         - id: reward-points-profile-route
-          uri: lb://REWARDSPOINTSSERVICE
+          uri: lb://REWARDSERVICE
           predicates:
-            - Path=/api/reward-points-profile/**
+            - Path=/api/rewards/**
         - id: voucher-route
-          uri: lb://REWARDSPOINTSSERVICE
+          uri: lb://REWARDSERVICE
           predicates:
             - Path=/api/vouchers/**
         - id: email-route
           uri: lb://EMAILSERVICE
           predicates:
             - Path=/api/email/**
+        - id: activity-route
+          uri: lb://ACTIVITYSERVICE
+          predicates:
+            - Path=/api/activities/**
   
 logging:
   level:
