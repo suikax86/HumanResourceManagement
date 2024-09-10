@@ -75,6 +75,30 @@ const requestEm  = [
         </NavLink>
     ),
   },
+  {
+    key: '4',
+    label: (
+      <NavLink to="/TimeSheet" className={'header_dropdown'}>
+          TimeSheet
+        </NavLink>
+    ),
+  },
+  {
+    key: '5',
+    label: (
+      <NavLink to="/DuyetDon" className={'header_dropdown'}>
+          Duyệt đơn nhân viên
+        </NavLink>
+    ),
+  },
+  {
+    key: '6',
+    label: (
+      <NavLink to="/ShowTimeSheet" className={'header_dropdown'}>
+          Xem giờ làm
+      </NavLink>
+    ),
+  },
 ];
 const requestMa  = [
   {
@@ -96,7 +120,7 @@ const requestMa  = [
   {
     key: '3',
     label: (
-      <NavLink to="/CheckIn-CheckOut" className={'header_dropdown'}>
+      <NavLink to="/CheckIn-CheckOut" className={'header_dropdown'}>z
           Check in - Check out
         </NavLink>
     ),
@@ -117,6 +141,24 @@ const requestMa  = [
         </NavLink>
     ),
   },
+  {
+    key: '6',
+    label: (
+      <NavLink to="/TimeSheet" className={'header_dropdown'}>
+          TimeSheet
+      </NavLink>
+    ),
+  },
+  {
+    key: '7',
+    label: (
+      <NavLink to="/ShowTimeSheet" className={'header_dropdown'}>
+          Xem giờ làm
+      </NavLink>
+    ),
+  },
+ 
+ 
 ];
 const activityEm  = [
   {

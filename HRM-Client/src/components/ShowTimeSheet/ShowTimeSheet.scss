@@ -1,0 +1,50 @@
+/* Basic Reset for Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px; /* Reduced padding for compact look */
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 6px 12px; /* Reduced padding for compact buttons */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px; /* Smaller font size for compact look */
+    margin: 2px; /* Reduced margin for compact buttons */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  h1 {
+    margin-bottom: 10px; /* Reduced bottom margin for header */
+    font-size: 20px; /* Smaller font size for header */
+    color: #333;
+  }
+  
