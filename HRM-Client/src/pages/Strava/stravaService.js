@@ -9,13 +9,9 @@ export const getAuthorizationUrl = () => {
 };
 
 export const exchangeToken = async (code) => {
-  try {
-    console.log('Code:', code);
-    const response = await axios.post('http://localhost:8083/api/strava/exchange_token', { code });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
+  console.log('Code:', code);
+  const response = await axios.post('http://localhost:8080/api/activities/strava/exchange_token', { code });
+  return response.data;
 };
 
 export const getActivities = async (accessToken) => {
