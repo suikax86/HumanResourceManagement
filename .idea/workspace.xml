@@ -5,67 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="645be0cb-8f3f-4997-bd6c-fb8e74514a80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/HRM-Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/ApiGatewayApplication.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EmailServiceApplication.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EmployeeServiceApplication.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/RewardsPointsServiceApplication.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/API-Gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/TransferPoint/TransferPoint.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/TransferPoint/TransferPoint.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Footer/Footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Callback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Callback.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/RewardsPointsServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/RewardServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/config/RabbitMQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/RewardPointsTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/Voucher.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/Voucher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateRewardPointsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateRewardPointsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateVoucherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateVoucherRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/dtos/RedeemVoucherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/RedeemVoucherRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/dtos/RewardPointsProfileDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/RewardPointsProfileDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/dtos/TransferPointsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/TransferPointsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/dtos/VoucherDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/VoucherDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/model/enums/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/enums/TransactionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/repository/RewardPointsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/repository/RewardPointsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/repository/VoucherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/repository/VoucherRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/service/RewardPointsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/java/com/example/rewardspointsservice/service/VoucherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/VoucherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardsPointsService/src/test/java/com/example/rewardspointsservice/RewardsPointsServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/test/java/com/example/rewardspointsservice/RewardServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/src/main/java/com/example/stravaservice/StravaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/src/main/java/com/example/stravaservice/StravaServiceApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StravaService/src/test/java/com/example/stravaservice/StravaServiceApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,33 +38,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.ActivityServiceApplication.executor": "Run",
-    "Spring Boot.ApiGatewayApplication.executor": "Run",
-    "Spring Boot.EmailServiceApplication.executor": "Run",
-    "Spring Boot.EmployeeServiceApplication.executor": "Run",
-    "Spring Boot.EurekaServerApplication.executor": "Run",
-    "Spring Boot.RewardServiceApplication.executor": "Run",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "21",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ActivityServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmailServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmployeeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RewardServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -257,7 +197,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java</url>
           <line>23</line>
-          <properties class="com.example.activityservice.controller.StravaController" method="exchangeToken">
+          <properties class="com.example.activityservice.controller.StravaController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
