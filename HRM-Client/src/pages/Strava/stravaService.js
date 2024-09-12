@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const clientId = '127861';
+const clientId = '134585';
 const redirectUri = 'http://localhost:5173/callback';
 const scope = 'activity:read';
 

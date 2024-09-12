@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="EmailServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <option name="ACTIVE_PROFILES" value="default" />
+    <envs>
+      <env name="EMAIL-PASSWORD" value="BEwPdc6z4hm9miljJzN5gKSckA0VsrXrSD0b+TLrrgSY" />
+    </envs>
+    <module name="EmailService" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.emailservice.EmailServiceApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
