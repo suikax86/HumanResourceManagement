@@ -15,7 +15,7 @@ public class EmailConfig {
         mailSender.setHost("email-smtp.ap-southeast-1.amazonaws.com");
         mailSender.setPort(587);
         mailSender.setUsername("REMOVED");
-        mailSender.setPassword("REMOVED+TLrrgSY");
+        mailSender.setPassword(System.getenv("EMAIL-PASSWORD"));
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
