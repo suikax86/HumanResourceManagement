@@ -4,7 +4,7 @@
     <option name="ALTERNATIVE_JRE_PATH" value="21" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <module name="RewardService" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="da.hms.rewardservice.RewardServiceApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.rewardspointsservice.RewardServiceApplication" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

@@ -4,45 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="fix conflict">
-      <change afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/config/DotenvConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EmailService/src/main/java/com/example/emailservice/config/DotenvConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/ActivityServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/ActivityServiceApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/ApiGatewayApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/ApiGatewayApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EmailServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EmailServiceApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EmployeeServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EmployeeServiceApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/RewardServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/RewardServiceApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActivityService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActivityService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActivityService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmailService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmailService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmailService/src/main/java/com/example/emailservice/config/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/src/main/java/com/example/emailservice/config/EmailConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmailService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/RewardServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/RewardServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/config/RabbitMQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/controller/RewardPointsProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/controller/VoucherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/RewardPointsProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/RewardPointsTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/Voucher.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/Voucher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateRewardPointsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/CreateRewardPointsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateVoucherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/CreateVoucherRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/RedeemVoucherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/RedeemVoucherRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/RewardPointsProfileDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/RewardPointsProfileDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/TransferPointsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/TransferPointsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/VoucherDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/VoucherDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/enums/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/enums/TransactionType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/repository/RewardPointsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/repository/RewardPointsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/repository/VoucherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/repository/VoucherRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/service/RewardPointsListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/service/RewardPointsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/VoucherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/service/VoucherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/test/java/com/example/rewardspointsservice/RewardServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/test/java/da/hms/rewardservice/RewardServiceApplicationTests.java" afterDir="false" />
-    </list>
+    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="avoid revealing passwords and secret keys with .env" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +114,7 @@
       <updated>1726138042431</updated>
       <workItem from="1726138044190" duration="1182000" />
       <workItem from="1726139456061" duration="754000" />
-      <workItem from="1726207183986" duration="5824000" />
+      <workItem from="1726207183986" duration="5927000" />
     </task>
     <task id="LOCAL-00001" summary="fix conflict">
       <option name="closed" value="true" />
@@ -162,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726138489455</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="avoid revealing passwords and secret keys with .env">
+      <option name="closed" value="true" />
+      <created>1726221181059</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726221181059</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +151,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix conflict" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix conflict" />
+    <MESSAGE value="avoid revealing passwords and secret keys with .env" />
+    <option name="LAST_COMMIT_MESSAGE" value="avoid revealing passwords and secret keys with .env" />
   </component>
 </project>
