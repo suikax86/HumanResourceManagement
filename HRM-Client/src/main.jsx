@@ -15,8 +15,8 @@ import CheckInCheckOutPage from "./pages/CheckInCheckOut/CheckInCheckOutPage.jsx
 import Page404 from "./pages/404/404.jsx";
 import Page403 from "./pages/403/403.jsx";
 import TransferpointPage from './pages/TransferPointPage/TransferPointPage.jsx';
-import LoginButton from "./pages/Strava/LoginButton.jsx";
 import Activities from "./pages/Strava/Activities.jsx";
+import StravaAuth from "./pages/Strava/StravaAuth.jsx";
 import Callback from "./pages/Strava/Callback.jsx";
 import UpdateTime from './pages/UpdateTime/UpdateTime.jsx';
 import ShowSheet from './pages/ShowSheet/ShowSheet.jsx';
@@ -41,8 +41,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route exac path="/404" element={<Page404 />} />
         <Route exac path="/403" element={<Page403 />} />
         <Route exac path="/transfer-point" element={<TransferpointPage />} />
-        <Route exac path="/strava/login" element={<LoginButton />} />
         <Route exac path="/strava" element={<Activities />} />
+        <Route exac path="/strava-auth" element={<StravaAuth />} />
         <Route exac path="/callback" element={<Callback />} />
         <Route exac path="/TimeSheet" element={<UpdateTime />} />
         <Route exac path="/ShowTimeSheet" element={<ShowSheet />} />
