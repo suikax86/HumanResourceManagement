@@ -4,71 +4,116 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/EmailServiceApplication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/EmployeeServiceApplication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/RewardServiceApplication.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" beforeDir="false" />
+    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="fix conflict">
+      <change afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/config/DotenvConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EmailService/src/main/java/com/example/emailservice/config/DotenvConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/ActivityServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/ActivityServiceApplication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/ApiGatewayApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/ApiGatewayApplication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EmailServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EmailServiceApplication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EmployeeServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EmployeeServiceApplication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/EurekaServerApplication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/RewardServiceApplication.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/RewardServiceApplication.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActivityService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActivityService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ActivityService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmailService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmailService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmailService/src/main/java/com/example/emailservice/config/EmailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/src/main/java/com/example/emailservice/config/EmailConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmailService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/EmailService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/RewardServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/RewardServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/config/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/controller/RewardPointsProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/controller/VoucherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/RewardPointsProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/RewardPointsTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/Voucher.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/Voucher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateRewardPointsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/CreateRewardPointsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/CreateVoucherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/CreateVoucherRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/RedeemVoucherRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/RedeemVoucherRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/RewardPointsProfileDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/RewardPointsProfileDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/TransferPointsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/TransferPointsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/dtos/VoucherDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/dtos/VoucherDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/enums/TransactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/model/enums/TransactionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/repository/RewardPointsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/repository/RewardPointsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/repository/VoucherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/repository/VoucherRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/service/RewardPointsListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/service/RewardPointsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/VoucherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/da/hms/rewardservice/service/VoucherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/test/java/com/example/rewardspointsservice/RewardServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/test/java/da/hms/rewardservice/RewardServiceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "suikax86"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;suikax86&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/suikax86/HRM-Project",
-    "accountId": "59d761e9-5fa7-45fa-a291-af16fb7f2d4e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/suikax86/HRM-Project&quot;,
+    &quot;accountId&quot;: &quot;59d761e9-5fa7-45fa-a291-af16fb7f2d4e&quot;
   }
-}]]></component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2ly2XcttY282EgnZX5HgdXD3UB7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ActivityServiceApplication.executor": "Run",
-    "Spring Boot.EmailServiceApplication.executor": "Run",
-    "Spring Boot.EmployeeServiceApplication.executor": "Run",
-    "Spring Boot.EurekaServerApplication.executor": "Run",
-    "Spring Boot.RewardServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ActivityServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmailServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmployeeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RewardServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;LongDev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -79,7 +124,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
+  <component name="RunManager" selected="Spring Boot.EmailServiceApplication">
     <list>
       <item itemvalue="Spring Boot.ActivityServiceApplication" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
@@ -88,11 +133,6 @@
       <item itemvalue="Spring Boot.RewardServiceApplication" />
       <item itemvalue="Spring Boot.EurekaServerApplication" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Spring Boot.EurekaServerApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -110,11 +150,37 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1726138042431</updated>
-      <workItem from="1726138044190" duration="380000" />
+      <workItem from="1726138044190" duration="1182000" />
+      <workItem from="1726139456061" duration="754000" />
+      <workItem from="1726207183986" duration="5824000" />
     </task>
+    <task id="LOCAL-00001" summary="fix conflict">
+      <option name="closed" value="true" />
+      <created>1726138489455</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726138489455</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix conflict" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix conflict" />
   </component>
 </project>
