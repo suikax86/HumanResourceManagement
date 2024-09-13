@@ -1,6 +1,6 @@
 package com.example.activityservice.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,11 +14,13 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/activities/strava")
 public class StravaController {
-    @Value("${strava.client.id}")
-    private String clientId;
 
-    @Value("${strava.client.secret}")
-    private String clientSecret;
+    private final Dotenv dotenv;
+
+    public StravaController(Dotenv dotenv) {
+        this.dotenv = dotenv;
+    }
+
 
     @PostMapping("/exchange_token")
     public ResponseEntity<?> exchangeToken(@RequestBody Map<String, String> request) {
@@ -28,6 +30,8 @@ public class StravaController {
 
         RestTemplate restTemplate = new RestTemplate();
         Map<String, String> params = new HashMap<>();
+        String clientId = dotenv.get("STRAVA_CLIENT_ID");
+        String clientSecret = dotenv.get("STRAVA_CLIENT_SECRET");
         params.put("client_id", clientId);
         params.put("client_secret", clientSecret);
         params.put("code", code);
