@@ -3,6 +3,7 @@ package com.example.rewardspointsservice.controller;
 import com.example.rewardspointsservice.model.RedeemedVoucher;
 import com.example.rewardspointsservice.model.RewardPointsProfile;
 import com.example.rewardspointsservice.model.dtos.RewardPointsProfileDto;
+import com.example.rewardspointsservice.model.dtos.UpdatePointsRequest;
 import com.example.rewardspointsservice.service.RewardPointsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class RewardPointsProfileController {
 
     @GetMapping("/all")
     public List<RewardPointsProfileDto> getAllRewardPoints() {
-       return rewardPointsService.getAllProfilesDto();
+        return rewardPointsService.getAllProfilesDto();
     }
 
     @PostMapping("/create")
@@ -39,5 +40,12 @@ public class RewardPointsProfileController {
     public ResponseEntity<List<RedeemedVoucher>> getRedeemedVouchers(@PathVariable Long employeeId) {
         RewardPointsProfile profile = rewardPointsService.getProfile(employeeId);
         return ResponseEntity.ok(profile.getRedeemedVouchers());
-}
+    }
+
+    @PutMapping("/update-points")
+    public ResponseEntity<String> updatePoints(@RequestBody UpdatePointsRequest request) {
+        String response = rewardPointsService.updatePoints(request);
+        return ResponseEntity.ok(response);
+    }
+
 }

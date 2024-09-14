@@ -13,7 +13,8 @@ function VoucherList() {
     axios.get('http://localhost:8080/api/vouchery/campaign/4')
       .then(response => {
         if (response.data && response.data.children) {
-          setVouchers(response.data.children);
+          const activeVouchers = response.data.children.filter(voucher => voucher.status === "active");
+          setVouchers(activeVouchers);
         }
       })
       .catch(error => console.error('Error fetching vouchers:', error));
@@ -66,6 +67,7 @@ function VoucherList() {
             <div className='Voucher_name'>{v.name}</div>
             <div className='Voucher_description'>{v.description}</div>
             <div className='Voucher_HSD'>Hạn sử dụng: {new Date(v.end_at).toLocaleDateString()}</div>
+            <div className='Voucher_points'>Points: 20</div>
             {selectedVoucher && selectedVoucher.id === v.id && (
               <button onClick={() => redeemVoucher(v.id)}>Đổi</button>
             )}

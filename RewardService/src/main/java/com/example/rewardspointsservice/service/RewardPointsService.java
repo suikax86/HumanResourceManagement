@@ -3,6 +3,7 @@ package com.example.rewardspointsservice.service;
 import com.example.rewardspointsservice.model.RedeemedVoucher;
 import com.example.rewardspointsservice.model.RewardPointsProfile;
 import com.example.rewardspointsservice.model.dtos.RewardPointsProfileDto;
+import com.example.rewardspointsservice.model.dtos.UpdatePointsRequest;
 import com.example.rewardspointsservice.repository.RewardPointsRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,6 @@ import java.util.List;
 @Service
 public class RewardPointsService {
     private final RewardPointsRepository rewardPointsRepository;
-
 
     public RewardPointsService(RewardPointsRepository rewardPointsRepository) {
         this.rewardPointsRepository = rewardPointsRepository;
@@ -55,15 +55,16 @@ public class RewardPointsService {
     }
 
     public String createRewardPointsProfile(Long employeeId, String employeeName) {
-            // check if the employee already has a reward points profile
-            if (rewardPointsRepository.findByEmployeeId(employeeId).isPresent()) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Profile already exists for employee ID: " + employeeId);
-            }
-            RewardPointsProfile profile = new RewardPointsProfile();
-            profile.setEmployeeId(employeeId);
-            profile.setEmployeeName(employeeName);
-            rewardPointsRepository.save(profile);
-            return "Profile created successfully for employee ID: " + employeeId;
+        // check if the employee already has a reward points profile
+        if (rewardPointsRepository.findByEmployeeId(employeeId).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Profile already exists for employee ID: " + employeeId);
+        }
+        RewardPointsProfile profile = new RewardPointsProfile();
+        profile.setEmployeeId(employeeId);
+        profile.setEmployeeName(employeeName);
+        rewardPointsRepository.save(profile);
+        return "Profile created successfully for employee ID: " + employeeId;
     }
 
     public double getRewardPoints(Long employeeId) {
@@ -75,7 +76,6 @@ public class RewardPointsService {
     public void deleteRewardPointsProfile(Long employeeId) {
         rewardPointsRepository.deleteByEmployeeId(employeeId);
     }
-
 
     public String transferPoints(Long fromEmployeeId, Long toEmployeeId, double amount, String msg) {
         RewardPointsProfile fromProfile = rewardPointsRepository.findByEmployeeId(fromEmployeeId)
@@ -91,7 +91,7 @@ public class RewardPointsService {
 
         String message = "Transfer from employee: " + fromProfile.getEmployeeName();
 
-        if(msg != null && !msg.isEmpty()) {
+        if (msg != null && !msg.isEmpty()) {
             message = message + " with message: " + msg;
         }
 
@@ -103,11 +103,36 @@ public class RewardPointsService {
         return "Points transferred successfully";
     }
 
+    public String updatePoints(UpdatePointsRequest request) {
+        RewardPointsProfile profile = getProfile(request.getEmployeeId());
+
+        if (request.getPoints() > 0) {
+            profile.addPoints(0L, request.getPoints(), request.getDescription());
+        } else {
+            profile.subtractPoints(0L, Math.abs(request.getPoints()), request.getDescription());
+        }
+
+        saveProfile(profile);
+        return "Points updated successfully";
+    }
+
     public void saveRedeemedVoucher(Long employeeId, RedeemedVoucher redeemedVoucher) {
         RewardPointsProfile profile = getProfile(employeeId);
         profile.getRedeemedVouchers().add(redeemedVoucher);
         saveProfile(profile);
     }
 
+    public boolean deductPoints(Long employeeId, double points, String description) {
+        RewardPointsProfile profile = getProfile(employeeId);
+
+        if (profile.getTotalPoints() < points) {
+            return false;
+        }
+
+        profile.subtractPoints(0L, points, description);
+        
+        saveProfile(profile);
+        return true;
+    }
 
 }
