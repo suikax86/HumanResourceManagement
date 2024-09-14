@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { exchangeToken } from './stravaService';
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { exchangeToken } from "./stravaService";
 
 const Callback = () => {
   const location = useLocation();
@@ -9,23 +9,24 @@ const Callback = () => {
   useEffect(() => {
     const fetchToken = async () => {
       const params = new URLSearchParams(location.search);
-      const code = params.get('code');
-      console.log('Authorization code:', code); // Debug log
+      const code = params.get("code");
       if (code) {
         try {
           const tokenData = await exchangeToken(code);
-          console.log('Token data:', tokenData); // Debug log
-          localStorage.setItem('access_token', tokenData.access_token);
-          navigate('/strava');
+          localStorage.setItem("userId", tokenData.userId);
+          navigate("/strava");
         } catch (error) {
-          console.error('Error during token exchange:', error); // Debug log
+          console.error("Error during token exchange:", error);
+          navigate("/");
         }
+      } else {
+        navigate("/");
       }
     };
     fetchToken();
   }, [location, navigate]);
 
-  return <div>Loading...</div>;
+  return <div>Processing Strava authorization...</div>;
 };
 
 export default Callback;

@@ -2,11 +2,11 @@ package com.example.activityservice.controller;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,16 +16,15 @@ import java.util.Map;
 public class StravaController {
 
     private final Dotenv dotenv;
+    private final Map<String, String> tokenStorage = new HashMap<>();
 
     public StravaController(Dotenv dotenv) {
         this.dotenv = dotenv;
     }
 
-
     @PostMapping("/exchange_token")
     public ResponseEntity<?> exchangeToken(@RequestBody Map<String, String> request) {
         String code = request.get("code");
-
         String url = "https://www.strava.com/oauth/token";
 
         RestTemplate restTemplate = new RestTemplate();
@@ -38,8 +37,31 @@ public class StravaController {
         params.put("grant_type", "authorization_code");
 
         ResponseEntity<Map> response = restTemplate.postForEntity(url, params, Map.class);
+        Map<String, Object> tokenData = response.getBody();
+
+        String userId = "user_" + System.currentTimeMillis(); // Generate a unique user ID
+        tokenStorage.put(userId, (String) tokenData.get("access_token"));
+
+        // Return the user ID to the client
+        return ResponseEntity.ok(Map.of("userId", userId));
+    }
+
+    @GetMapping("/activities")
+    public ResponseEntity<?> getActivities(@RequestParam String userId) {
+        String accessToken = tokenStorage.get(userId);
+        if (accessToken == null) {
+            return ResponseEntity.badRequest().body("Invalid user ID");
+        }
+
+        String url = "https://www.strava.com/api/v3/clubs/1257078/activities?per_page=30";
+        RestTemplate restTemplate = new RestTemplate();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(accessToken);
+        HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
+
+        ResponseEntity<Object[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, Object[].class);
 
         return ResponseEntity.ok(response.getBody());
     }
 }
-
