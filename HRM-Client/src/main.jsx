@@ -21,7 +21,8 @@ import UpdateTime from './pages/UpdateTime/UpdateTime.jsx';
 import ShowSheet from './pages/ShowSheet/ShowSheet.jsx';
 import StravaAuth from "./pages/Strava/StravaAuth.jsx";
 import MyVoucherPage from "./pages/MyVoucherPage/MyVoucherPage.jsx";
-
+import EmployeeList from "./pages/EmployeeList/EmployeeList.jsx";
+import MyPoint from "./pages/MyPoint/MyPoint.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -47,6 +48,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route exac path="/TimeSheet" element={<UpdateTime />} />
         <Route exac path="/ShowTimeSheet" element={<ShowSheet />} />
         <Route exac path="/MyVoucher" element={<MyVoucherPage />} />
+        <Route exac path="/EmployeeList" element={<EmployeeList />} />
+        <Route exac path="/MyPoint" element={<MyPoint />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
