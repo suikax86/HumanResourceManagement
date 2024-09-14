@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="avoid revealing passwords and secret keys with .env" />
+    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="avoid revealing passwords and secret keys with .env">
+      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Activities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/StravaActivities.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/StravaAuth.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Activities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Activities.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Callback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Callback.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/LoginButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,6 +127,7 @@
       <workItem from="1726138044190" duration="1182000" />
       <workItem from="1726139456061" duration="754000" />
       <workItem from="1726207183986" duration="5927000" />
+      <workItem from="1726281780944" duration="2422000" />
     </task>
     <task id="LOCAL-00001" summary="fix conflict">
       <option name="closed" value="true" />
