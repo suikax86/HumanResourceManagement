@@ -75,6 +75,10 @@ public class VoucheryController {
                     voucherResponse.get("code").toString()
             );
 
+            double points = 20;
+            String msg = "Vouchery Redeem: " + redeemedVoucher.getCampaignName();
+            rewardPointsService.deductPoints(request.getEmployeeId(), points, msg);
+
             rewardPointsService.saveRedeemedVoucher(request.getEmployeeId(), redeemedVoucher);
 
             return ResponseEntity.ok(voucherResponse);
