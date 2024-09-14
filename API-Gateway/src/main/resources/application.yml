@@ -31,6 +31,10 @@ spring:
           uri: lb://REWARDSERVICE
           predicates:
             - Path=/api/vouchers/**
+        - id: vouchery-route
+          uri: lb://REWARDSERVICE
+          predicates:
+              - Path=/api/vouchery/**
         - id: email-route
           uri: lb://EMAILSERVICE
           predicates:
@@ -39,6 +43,7 @@ spring:
           uri: lb://ACTIVITYSERVICE
           predicates:
             - Path=/api/activities/**
+
   
 logging:
   level:
