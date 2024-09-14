@@ -279,6 +279,7 @@ function Header() {
     const nav = useNavigate()
     const logOut = () => {
         localStorage.removeItem('userInfo')
+        localStorage.removeItem('userId')
         nav('/')
     }
     return (

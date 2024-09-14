@@ -1,35 +1,79 @@
 .VoucherList_container{
   height: 80vh;
   width: 100%;
+  padding: 20px;
+
   .Category{
     display: flex;
     gap: 10px;
     margin-top: 30px;
+    
     .Category_name{
       border-radius: 50px;
-      border:1px solid black ;
-      padding: 10px;
+      border: 1px solid #ddd;
+      padding: 10px 20px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      
       &:hover{
-        background-color: black;
-        color: white;
+        background-color: #f0f0f0;
+        color: #333;
       }
     }
   }
+
   .Voucher{
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto auto auto;
-    gap: 50px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
     margin-top: 50px;
+
     .Voucher_detail{
-      padding: 20px;
-      border: 1px solid black;
-      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid #e0e0e0;
+      border-radius: 15px;
       cursor: pointer;
-      .Voucher_brand{
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+
+      &:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .Voucher_name{
         font-weight: bold;
-        font-size: 30px;
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .Voucher_description{
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.4;
+      }
+
+      .Voucher_HSD{
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 15px;
+      }
+
+      button{
+        background-color: #338b9b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover{
+          background-color: #45a049;
+        }
       }
     }
   }
