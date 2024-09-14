@@ -86,14 +86,6 @@ const requestEm  = [
     {
         key: '5',
         label: (
-            <NavLink to="/DuyetDon" className={'header_dropdown'}>
-                Duyệt đơn nhân viên
-            </NavLink>
-        ),
-    },
-    {
-        key: '6',
-        label: (
             <NavLink to="/ShowTimeSheet" className={'header_dropdown'}>
                 Xem giờ làm
             </NavLink>
