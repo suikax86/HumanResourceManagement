@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="[FE] VoucherList">
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/MyVoucherPage/MyVoucherPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RedeemedVoucher.java" afterDir="false" />
+    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="[BE] [FE] redeem voucher and my voucher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get all campaigns.bru" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/VoucherList/VoucherList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/VoucherList/VoucherList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/CheckInCheckOut/CheckInCheckOut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/CheckInCheckOut/CheckInCheckOut.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucheryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucheryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726305082428</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[BE] [FE] redeem voucher and my voucher">
+      <option name="closed" value="true" />
+      <created>1726308538781</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726308538781</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +195,7 @@
     <MESSAGE value="avoid revealing passwords and secret keys with .env" />
     <MESSAGE value="[BE] getCampaign" />
     <MESSAGE value="[FE] VoucherList" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FE] VoucherList" />
+    <MESSAGE value="[BE] [FE] redeem voucher and my voucher" />
+    <option name="LAST_COMMIT_MESSAGE" value="[BE] [FE] redeem voucher and my voucher" />
   </component>
 </project>
