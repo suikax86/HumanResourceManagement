@@ -49,6 +49,14 @@ const profileMa  = [
             </NavLink>
         ),
     },
+    {
+        key: '4',
+        label: (
+            <NavLink to="/EmployeeList" className={'header_dropdown'}>
+                Danh sách nhân viên
+            </NavLink>
+        ),
+    },
 ];
 const requestEm  = [
     {
@@ -184,7 +192,7 @@ const pointEm  = [
     {
         key: '1',
         label: (
-            <NavLink to="/" className={'header_dropdown'}>
+            <NavLink to="/MyPoint" className={'header_dropdown'}>
                 Điểm thưởng của tôi
             </NavLink>
         ),
@@ -210,7 +218,7 @@ const pointMa  = [
     {
         key: '1',
         label: (
-            <NavLink to="/" className={'header_dropdown'}>
+            <NavLink to="/MyPoint" className={'header_dropdown'}>
                 Điểm thưởng của tôi
             </NavLink>
         ),
@@ -237,14 +245,6 @@ const pointMa  = [
         label: (
             <NavLink to="/myvoucher" className={'header_dropdown'}>
                 Voucher của tôi
-            </NavLink>
-        ),
-    },
-    {
-        key: '5',
-        label: (
-            <NavLink to="/" className={'header_dropdown'}>
-                Tạo voucher
             </NavLink>
         ),
     },

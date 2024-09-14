@@ -1,0 +1,69 @@
+.EmployeeList_container{
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  .user-search-list{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    .user-list-title{
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .user-list{
+      height: 40%;
+      width: 80%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      overflow-y: scroll;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 20px;
+      gap: 10px;
+      .user-list-container{
+        width: 80%;
+        display: flex;
+        gap: 80px;
+        padding: 20px;
+        background-color: rgb(197, 198, 198);
+        border-radius: 20px;
+        &:hover{
+          background-color: rgb(244, 239, 239);
+        }
+      }
+    }
+  }
+  .User_information{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    .User_information_title{
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .User_information_infor{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .User_information_detail{
+        display: flex;
+        gap: 10px;
+        .User_information_detail_tilte{
+          font-weight: bold;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import "./Footer.scss"
 function Footer() {
   return (
     <div className='footer_container'>
-      This is footer
+      Copyright @ UDPT_09
     </div>
   )
 }

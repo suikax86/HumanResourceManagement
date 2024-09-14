@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="[BE] [FE] redeem voucher and my voucher">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get all campaigns.bru" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/CheckInCheckOut/CheckInCheckOut.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/CheckInCheckOut/CheckInCheckOut.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Footer/Footer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +69,7 @@
     "Spring Boot.EmployeeServiceApplication.executor": "Run",
     "Spring Boot.EurekaServerApplication.executor": "Run",
     "Spring Boot.RewardServiceApplication.executor": "Debug",
-    "git-widget-placeholder": "LongDev",
+    "git-widget-placeholder": "new-page",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
