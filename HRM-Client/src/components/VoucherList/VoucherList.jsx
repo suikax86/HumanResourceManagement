@@ -13,7 +13,8 @@ function VoucherList() {
     axios.get('http://localhost:8080/api/vouchery/campaign/4')
       .then(response => {
         if (response.data && response.data.children) {
-          setVouchers(response.data.children);
+          const activeVouchers = response.data.children.filter(voucher => voucher.status === "active");
+          setVouchers(activeVouchers);
         }
       })
       .catch(error => console.error('Error fetching vouchers:', error));
