@@ -2,7 +2,6 @@ package com.example.rewardspointsservice.controller;
 
 import com.example.rewardspointsservice.model.dtos.CreateVoucherRequest;
 import com.example.rewardspointsservice.model.dtos.RedeemVoucherRequest;
-import com.example.rewardspointsservice.model.dtos.VoucherDTO;
 import com.example.rewardspointsservice.service.VoucherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,0 +1,59 @@
+.MyVoucher_container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  
+    h2 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  
+    .Voucher_list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+  
+      .Voucher_item {
+        background-color: #f8f8f8;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: translateY(-5px);
+        }
+  
+        h3 {
+          color: #2c3e50;
+          margin-top: 0;
+          margin-bottom: 10px;
+          font-size: 1.2em;
+        }
+  
+        p {
+          color: #34495e;
+          margin: 5px 0;
+          font-size: 0.9em;
+  
+          &:last-child {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #e74c3c;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .MyVoucher_container {
+      padding: 10px;
+  
+      .Voucher_list {
+        grid-template-columns: 1fr;
+      }
+    }
+  }

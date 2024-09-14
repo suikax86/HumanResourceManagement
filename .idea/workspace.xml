@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="avoid revealing passwords and secret keys with .env">
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Activities.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/StravaActivities.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/StravaAuth.jsx" afterDir="false" />
+    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="[FE] VoucherList">
+      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/MyVoucherPage/MyVoucherPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RedeemedVoucher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ActivityService/src/main/java/com/example/activityservice/controller/StravaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get all campaigns.bru" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/VoucherList/VoucherList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/VoucherList/VoucherList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HRM-Client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Activities.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Activities.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Callback.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/Callback.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/LoginButton.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/pages/Strava/stravaService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/RewardPointsProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucheryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/controller/VoucheryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/model/RewardPointsProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/RewardService/src/main/java/com/example/rewardspointsservice/service/RewardPointsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,32 +65,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ActivityServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EmailServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EmployeeServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.RewardServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;LongDev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ActivityServiceApplication.executor": "Run",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.EmailServiceApplication.executor": "Run",
+    "Spring Boot.EmployeeServiceApplication.executor": "Run",
+    "Spring Boot.EurekaServerApplication.executor": "Run",
+    "Spring Boot.RewardServiceApplication.executor": "Debug",
+    "git-widget-placeholder": "LongDev",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -145,7 +155,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726221181059</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="[BE] getCampaign">
+      <option name="closed" value="true" />
+      <created>1726296612041</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726296612041</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[FE] VoucherList">
+      <option name="closed" value="true" />
+      <created>1726305082428</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726305082428</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +191,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix conflict" />
     <MESSAGE value="avoid revealing passwords and secret keys with .env" />
-    <option name="LAST_COMMIT_MESSAGE" value="avoid revealing passwords and secret keys with .env" />
+    <MESSAGE value="[BE] getCampaign" />
+    <MESSAGE value="[FE] VoucherList" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FE] VoucherList" />
   </component>
 </project>

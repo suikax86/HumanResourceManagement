@@ -5,14 +5,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import './VoucherList.scss';
 
 function VoucherList() {
-  const [select, setSelect] = useState('All');
   const [vouchers, setVouchers] = useState([]);
   const [selectedVoucher, setSelectedVoucher] = useState(null);
   const [employee, setEmployee] = useState({ name: '', points: 0 });
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/vouchers')
-      .then(response => setVouchers(response.data))
+    axios.get('http://localhost:8080/api/vouchery/campaign/4')
+      .then(response => {
+        if (response.data && response.data.children) {
+          setVouchers(response.data.children);
+        }
+      })
       .catch(error => console.error('Error fetching vouchers:', error));
   }, []);
 
@@ -25,10 +28,6 @@ function VoucherList() {
       .catch(error => console.error('Error fetching employee info:', error));
   }, []);
 
-  const chooseVoucherBrand = (brand) => {
-    setSelect(brand);
-  };
-
   const handleVoucherClick = (voucher) => {
     setSelectedVoucher(voucher);
   };
@@ -37,7 +36,7 @@ function VoucherList() {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const employeeId = userInfo.employeeId;
 
-    axios.post('http://localhost:8080/api/vouchers/redeem', { voucherId, employeeId })
+    axios.post('http://localhost:8080/api/vouchery/redeem', { voucherId, employeeId })
       .then(response => {
         if (response.status === 200) {
           toast.success('Voucher redeemed successfully!');
@@ -57,36 +56,16 @@ function VoucherList() {
     <div className='VoucherList_container'>
       <div>
         <h2>Thông tin nhân viên</h2>
-        <p>Tên: {employee.name}</p>
-        <p>Số points: {employee.rewardPoints}</p>
+        <p>Tên nhân viên: {employee.name}</p>
+        <p>Số points hiện tại: {employee.rewardPoints}</p>
       </div>
       
-      <div className='Category'>
-        {['All', ...new Set(vouchers.map(v => v.brand))].map((brand, id) => (
-          <div className='Category_name' key={id} onClick={() => chooseVoucherBrand(brand)}>
-            {brand}
-          </div>
-        ))}
-      </div>
       <div className='Voucher'>
-        {select === 'All' ? vouchers.map((v, id) => (
+        {vouchers.map((v, id) => (
           <div className='Voucher_detail' key={id} onClick={() => handleVoucherClick(v)}>
-            <div className='Voucher_brand'>{v.brand}</div>
             <div className='Voucher_name'>{v.name}</div>
             <div className='Voucher_description'>{v.description}</div>
-            <div className='Voucher_HSD'>Hạn sử dụng: {v.dateEnd}</div>
-            <div className='Voucher_point'>Số point đổi: {v.points}</div>
-            {selectedVoucher && selectedVoucher.id === v.id && (
-              <button onClick={() => redeemVoucher(v.id)}>Đổi</button>
-            )}
-          </div>
-        )) : vouchers.filter(v => v.brand === select).map((v, id) => (
-          <div className='Voucher_detail' key={id} onClick={() => handleVoucherClick(v)}>
-            <div className='Voucher_brand'>{v.brand}</div>
-            <div className='Voucher_name'>{v.name}</div>
-            <div className='Voucher_description'>{v.description}</div>
-            <div className='Voucher_HSD'>Hạn sử dụng: {v.dateEnd}</div>
-            <div className='Voucher_point'>Số point đổi: {v.points}</div>
+            <div className='Voucher_HSD'>Hạn sử dụng: {new Date(v.end_at).toLocaleDateString()}</div>
             {selectedVoucher && selectedVoucher.id === v.id && (
               <button onClick={() => redeemVoucher(v.id)}>Đổi</button>
             )}

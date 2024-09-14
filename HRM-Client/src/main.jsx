@@ -20,7 +20,7 @@ import Callback from "./pages/Strava/Callback.jsx";
 import UpdateTime from './pages/UpdateTime/UpdateTime.jsx';
 import ShowSheet from './pages/ShowSheet/ShowSheet.jsx';
 import StravaAuth from "./pages/Strava/StravaAuth.jsx";
-
+import MyVoucherPage from "./pages/MyVoucherPage/MyVoucherPage.jsx";
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -46,6 +46,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route exac path="/callback" element={<Callback />} />
         <Route exac path="/TimeSheet" element={<UpdateTime />} />
         <Route exac path="/ShowTimeSheet" element={<ShowSheet />} />
+        <Route exac path="/MyVoucher" element={<MyVoucherPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
