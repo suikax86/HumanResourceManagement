@@ -237,6 +237,14 @@ const pointEm  = [
             </NavLink>
         ),
     },
+    {
+        key: '3',
+        label: (
+            <NavLink to="/myvoucher" className={'header_dropdown'}>
+                Voucher của tôi
+            </NavLink>
+        ),
+    }
 ];
 const pointMa  = [
     {
@@ -266,6 +274,14 @@ const pointMa  = [
     },
     {
         key: '4',
+        label: (
+            <NavLink to="/myvoucher" className={'header_dropdown'}>
+                Voucher của tôi
+            </NavLink>
+        ),
+    },
+    {
+        key: '5',
         label: (
             <NavLink to="/" className={'header_dropdown'}>
                 Tạo voucher

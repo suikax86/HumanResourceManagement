@@ -1,5 +1,6 @@
 package com.example.rewardspointsservice.service;
 
+import com.example.rewardspointsservice.model.RedeemedVoucher;
 import com.example.rewardspointsservice.model.RewardPointsProfile;
 import com.example.rewardspointsservice.model.dtos.RewardPointsProfileDto;
 import com.example.rewardspointsservice.repository.RewardPointsRepository;
@@ -100,6 +101,12 @@ public class RewardPointsService {
         rewardPointsRepository.save(toProfile);
 
         return "Points transferred successfully";
+    }
+
+    public void saveRedeemedVoucher(Long employeeId, RedeemedVoucher redeemedVoucher) {
+        RewardPointsProfile profile = getProfile(employeeId);
+        profile.getRedeemedVouchers().add(redeemedVoucher);
+        saveProfile(profile);
     }
 
 

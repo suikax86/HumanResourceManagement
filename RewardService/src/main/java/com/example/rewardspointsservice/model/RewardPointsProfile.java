@@ -18,9 +18,11 @@ public class RewardPointsProfile {
     private String employeeName;
     private Double totalPoints;
     private List<RewardPointsTransaction> pointsHistory = new ArrayList<>();
+    private List<RedeemedVoucher> redeemedVouchers = new ArrayList<>();
 
     public RewardPointsProfile() {
         this.totalPoints = (double) 100;
+        this.redeemedVouchers = new ArrayList<>();
     }
 
     public void addPoints(Long seederId,Double points, String description) {

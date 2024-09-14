@@ -1,5 +1,7 @@
 package com.example.rewardspointsservice.controller;
 
+import com.example.rewardspointsservice.model.RedeemedVoucher;
+import com.example.rewardspointsservice.model.RewardPointsProfile;
 import com.example.rewardspointsservice.model.dtos.RewardPointsProfileDto;
 import com.example.rewardspointsservice.service.RewardPointsService;
 import org.springframework.http.HttpStatus;
@@ -32,4 +34,10 @@ public class RewardPointsProfileController {
         String response = rewardPointsService.createRewardPointsProfile(employeeId, employeeName);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{employeeId}/redeemed-vouchers")
+    public ResponseEntity<List<RedeemedVoucher>> getRedeemedVouchers(@PathVariable Long employeeId) {
+        RewardPointsProfile profile = rewardPointsService.getProfile(employeeId);
+        return ResponseEntity.ok(profile.getRedeemedVouchers());
+}
 }

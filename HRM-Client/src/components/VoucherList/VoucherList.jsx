@@ -36,7 +36,7 @@ function VoucherList() {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     const employeeId = userInfo.employeeId;
 
-    axios.post('http://localhost:8080/api/vouchers/redeem', { voucherId, employeeId })
+    axios.post('http://localhost:8080/api/vouchery/redeem', { voucherId, employeeId })
       .then(response => {
         if (response.status === 200) {
           toast.success('Voucher redeemed successfully!');
