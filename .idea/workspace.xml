@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="edit header.jsx">
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/components/EmployeeList/EmployeeList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/components/EmployeeList/EmployeeList.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/components/MyPoint/MyPoint.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/components/MyPoint/MyPoint.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/EmployeeList/EmployeeList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/EmployeeList/EmployeeList.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/MyPoint/MyPoint.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HRM-Client/src/pages/MyPoint/MyPoint.scss" afterDir="false" />
+    <list default="true" id="ff27cd0b-e640-45ea-b1f9-960c0dd9a6d9" name="Changes" comment="merge code from Quoc">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Get UpdateTimeSheet.bru" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Get per employee.bru" beforeDir="false" />
@@ -22,9 +15,6 @@
       <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign [BE].bru" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" beforeDir="false" afterPath="$PROJECT_DIR$/API-Collection/Vouchery/Get a campaign.bru" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API-Collection/Vouchery/Get all campaigns.bru" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Footer/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/components/common/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HRM-Client/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/HRM-Client/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,36 +61,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ActivityServiceApplication.executor": "Run",
-    "Spring Boot.ApiGatewayApplication.executor": "Run",
-    "Spring Boot.EmailServiceApplication.executor": "Run",
-    "Spring Boot.EmployeeServiceApplication.executor": "Run",
-    "Spring Boot.EurekaServerApplication.executor": "Run",
-    "Spring Boot.RewardServiceApplication.executor": "Run",
-    "git-widget-placeholder": "LongDev",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.configurations.included.in.services": "true",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ActivityServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmailServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EmployeeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RewardServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;LongDev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.2.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -114,7 +104,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EmailServiceApplication">
+  <component name="RunManager" selected="Spring Boot.EmployeeServiceApplication">
     <list>
       <item itemvalue="Spring Boot.ActivityServiceApplication" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
@@ -144,6 +134,8 @@
       <workItem from="1726139456061" duration="754000" />
       <workItem from="1726207183986" duration="5927000" />
       <workItem from="1726281780944" duration="2422000" />
+      <workItem from="1726381290335" duration="870000" />
+      <workItem from="1726414362189" duration="2339000" />
     </task>
     <task id="LOCAL-00001" summary="fix conflict">
       <option name="closed" value="true" />
@@ -217,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726316374523</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="merge code from Quoc">
+      <option name="closed" value="true" />
+      <created>1726317733716</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1726317733716</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +244,7 @@
     <MESSAGE value="[FE] filter voucher status=active" />
     <MESSAGE value="[FE] deduct points after exchanging voucher (temporary solution)" />
     <MESSAGE value="edit header.jsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit header.jsx" />
+    <MESSAGE value="merge code from Quoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge code from Quoc" />
   </component>
 </project>
